@@ -6,16 +6,18 @@ import TTS from "./TTS";
 import Calendar from "./Calendar";
 
 function App() {
-  const [currentMonth, setCurrentMonth] = useState(9); // 기본값: 10월 (0부터 시작)
+  const [currentYear, setCurrentYear] = useState(2023);
+  const [currentMonth, setCurrentMonth] = useState(9); // + 1 (default)
 
-  const handleChangeMonth = (newMonth: number) => {
+  const handleChangeMonth = (newYear: number, newMonth: number) => {
+    setCurrentYear(newYear);
     setCurrentMonth(newMonth);
   };
   return (
     <div style={{ width: "100vw", height: "100vh", background: "gray", marginTop: "0px" }}>
       <div className="App">
         <div>
-          <Calendar year={2023} month={currentMonth} onChangeMonth={handleChangeMonth} />
+          <Calendar year={currentYear} month={currentMonth} onChangeMonth={handleChangeMonth} />
           <STT />
           <TTS />
         </div>

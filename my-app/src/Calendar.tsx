@@ -4,7 +4,7 @@ import "./App.css";
 interface CalendarProps {
   year: number;
   month: number;
-  onChangeMonth: (newMonth: number) => void;
+  onChangeMonth: (newYear: number, newMonth: number) => void;
 }
 
 const daysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
@@ -33,12 +33,35 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, onChangeMonth }) => {
     }
     return days;
   };
+  //   const handlePrevMonth = () => {
+  //     onChangeMonth(month - 1);
+  //   };
+
+  //   const handleNextMonth = () => {
+  //     onChangeMonth(month + 1);
+  //   };
   const handlePrevMonth = () => {
-    onChangeMonth(month - 1);
+    let newYear = year;
+    let newMonth = month - 1;
+    if (newMonth < 0) {
+      newYear = year - 1;
+      newMonth = 11; // 12월로 설정
+    }
+    console.log(newMonth);
+    console.log(newYear);
+    onChangeMonth(newYear, newMonth);
   };
 
   const handleNextMonth = () => {
-    onChangeMonth(month + 1);
+    let newYear = year;
+    let newMonth = month + 1;
+    if (newMonth > 11) {
+      newYear = year + 1;
+      newMonth = 0; // 1월로 설정
+    }
+    console.log(newMonth);
+    console.log(newYear);
+    onChangeMonth(newYear, newMonth);
   };
 
   return (
