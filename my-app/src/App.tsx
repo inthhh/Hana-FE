@@ -6,10 +6,12 @@ import TTS from "./TTS";
 
 function App() {
   return (
-    <div style={{ width: "100%", height: "100%", background: "gray" }}>
+    <div style={{ width: "100vw", height: "100vh", background: "gray", marginTop: "0px" }}>
       <div className="App">
-        <STT />
-        <TTS />
+        <div>
+          <STT />
+          <TTS />
+        </div>
       </div>
     </div>
   );
