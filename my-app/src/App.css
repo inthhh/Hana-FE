@@ -17,7 +17,7 @@
 
 .calendar {
   border: 1px solid #ccc;
-  width: 300px;
+  width: 400px;
   margin: auto;
 }
 
@@ -33,18 +33,29 @@
   gap: 1px;
 }
 
-.day-label {
+/* .day-label {
   background-color: #f0f0f0;
   padding: 5px;
   text-align: center;
-}
+} */
 
 .day {
-  padding: 10px;
+  padding: 5px;
   text-align: center;
+  border: 1px solid #ccc;
+  position: relative;
 }
 
-.empty-day {
-  background-color: #f9f9f9;
-  height: 30px;
+.date {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.events {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: lightgreen;
 }

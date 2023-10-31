@@ -4,11 +4,12 @@ import "./App.css";
 interface CalendarProps {
   year: number;
   month: number;
+  onChangeMonth: (newMonth: number) => void;
 }
 
 const daysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
 
-const Calendar: React.FC<CalendarProps> = ({ year, month }) => {
+const Calendar: React.FC<CalendarProps> = ({ year, month, onChangeMonth }) => {
   console.log("calendar loading...");
   const numDays = daysInMonth(year, month);
   const firstDayOfWeek = new Date(year, month, 1).getDay();
@@ -19,7 +20,11 @@ const Calendar: React.FC<CalendarProps> = ({ year, month }) => {
     for (let i = 1; i <= numDays; i++) {
       days.push(
         <div key={i} className="day">
-          {i}
+          <span className="date">{i}</span>
+          <div className="events">
+            {/* 여기에 각 날짜의 일정을 추가할 수 있는 입력 필드나 버튼을 넣을 수 있습니다 */}
+            일정
+          </div>
         </div>
       );
     }
@@ -28,13 +33,22 @@ const Calendar: React.FC<CalendarProps> = ({ year, month }) => {
     }
     return days;
   };
+  const handlePrevMonth = () => {
+    onChangeMonth(month - 1);
+  };
+
+  const handleNextMonth = () => {
+    onChangeMonth(month + 1);
+  };
 
   return (
     <div className="calendar">
       <div className="header">
+        <button onClick={handlePrevMonth}>&lt;</button>
         <span>
           {year}년 {month + 1}월
         </span>
+        <button onClick={handleNextMonth}>&gt;</button>
       </div>
       <div className="days">
         <div className="day-label">일</div>
