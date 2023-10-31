@@ -40,7 +40,7 @@ const STT: React.FC = () => {
 
   return (
     <div>
-      <h1>STT(한국어)</h1>
+      <h1 style={{ marginTop: "30px" }}>STT(한국어)</h1>
       <p>마이크 : {listening ? "on" : "off"}</p>
       <button onClick={() => SpeechRecognition.startListening({ continuous: true, language: "ko" })}>Start</button>
       <button onClick={SpeechRecognition.stopListening}>Stop</button>
