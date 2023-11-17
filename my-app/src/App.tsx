@@ -4,6 +4,7 @@ import "./App.css";
 import STT from "./STT";
 import TTS from "./TTS";
 import Calendar from "./Calendar";
+import Main from "./Interfaces/Main";
 
 function App() {
   const [currentYear, setCurrentYear] = useState(2023);
@@ -16,11 +17,10 @@ function App() {
   return (
     <div style={{ width: "100vw", height: "100vh", background: "gray", marginTop: "0px" }}>
       <div className="App">
-        <div>
-          <Calendar year={currentYear} month={currentMonth} onChangeMonth={handleChangeMonth} />
-          <STT />
-          <TTS />
-        </div>
+        {/* <Calendar year={currentYear} month={currentMonth} onChangeMonth={handleChangeMonth} /> */}
+        {/* <STT />
+        <TTS /> */}
+        <Main />
       </div>
     </div>
   );

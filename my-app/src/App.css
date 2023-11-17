@@ -2,12 +2,15 @@
   margin: 0;
   padding: 0;
 }
+body {
+  overflow: hidden;
+}
 
 .App {
   font-family: "Arial", sans-serif;
   text-align: center;
-  width: 400px;
-  height: 100vh;
+  width: 390px;
+  height: 844px; /*100vh;*/
   margin: 0 auto;
   /* margin-top: -20px; */
   background-color: white;
@@ -18,13 +21,13 @@
 .calendar {
   border: 1px solid #ccc;
   width: 400px;
-  margin: auto;
 }
 
 .header {
   background-color: #f0f0f0;
   padding: 10px;
   font-weight: bold;
+  margin-top: 40px;
 }
 
 .days {
@@ -33,17 +36,18 @@
   gap: 1px;
 }
 
-/* .day-label {
+.day-label {
   background-color: #f0f0f0;
   padding: 5px;
   text-align: center;
-} */
+}
 
 .day {
   padding: 5px;
   text-align: center;
   border: 1px solid #ccc;
   position: relative;
+  height: 50px;
 }
 
 .date {
@@ -54,8 +58,9 @@
 
 .events {
   position: absolute;
-  bottom: 0px;
+  /* bottom: 0px; */
   left: 0px;
   right: 0px;
+  width: 100%;
   background-color: lightgreen;
 }

@@ -1,0 +1,31 @@
+.atmBox {
+  width: 177px;
+  height: 340px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  color: white;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomBox {
+  justify-content: center;
+  align-items: center;
+  background: rgba(173, 154, 95, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  height: 65px;
+  width: 390px;
+  position: fixed;
+  bottom: 0;
+}
