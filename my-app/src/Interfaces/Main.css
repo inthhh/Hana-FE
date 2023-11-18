@@ -30,3 +30,27 @@
   position: fixed;
   bottom: 0px;
 }
+
+.buttonContainer {
+  display: flex;
+  height: 140px;
+  width: 390px;
+  background: #d9d9d9;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+}
+.beforebtn {
+  height: 140px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.afterbtn {
+  height: 140px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import STT from "./STT";
 import TTS from "./TTS";
 import Calendar from "./Calendar";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./Interfaces/Main";
+import SendFirst from "./Interfaces/SendProcess/SendFirst";
+import SendSecond from "./Interfaces/SendProcess/SendSecond";
+import SendFinal from "./Interfaces/SendProcess/SendFinal";
 
 function App() {
   const [currentYear, setCurrentYear] = useState(2023);
@@ -15,14 +19,21 @@ function App() {
     setCurrentMonth(newMonth);
   };
   return (
-    <div style={{ width: "100vw", height: "100vh", background: "gray", marginTop: "0px" }}>
-      <div className="App">
-        {/* <Calendar year={currentYear} month={currentMonth} onChangeMonth={handleChangeMonth} /> */}
-        {/* <STT />
+    <Router>
+      <div style={{ width: "100vw", height: "100vh", background: "gray", marginTop: "0px" }}>
+        <div className="App">
+          {/* <Calendar year={currentYear} month={currentMonth} onChangeMonth={handleChangeMonth} /> */}
+          {/* <STT />
         <TTS /> */}
-        <Main />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/SendFirst" element={<SendFirst />} />
+            <Route path="/SendSecond" element={<SendSecond />} />
+            <Route path="/SendFinal" element={<SendFinal />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
