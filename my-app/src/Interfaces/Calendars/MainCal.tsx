@@ -4,7 +4,7 @@ import Calendar from "./Calendar";
 
 function MainCal() {
   const [currentYear, setCurrentYear] = useState(2023);
-  const [currentMonth, setCurrentMonth] = useState(9); // + 1 (default)
+  const [currentMonth, setCurrentMonth] = useState(11); // + 1 (default)
 
   const handleChangeMonth = (newYear: number, newMonth: number) => {
     setCurrentYear(newYear);
