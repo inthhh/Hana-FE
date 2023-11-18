@@ -10,18 +10,15 @@ function Main() {
   };
 
   const handleTicketClick = () => {
-    // "번호표 발급" 클릭 시 이동할 페이지
-    // 예: navigate("/TicketPage");
+    navigate("/TicketFirst");
   };
 
   const handleCalendarClick = () => {
-    // "캘린더" 클릭 시 이동할 페이지
-    // 예: navigate("/CalendarPage");
+    navigate("/MainCalendar");
   };
 
   const handleProductClick = () => {
-    // "상품 가입" 클릭 시 이동할 페이지
-    // 예: navigate("/ProductPage");
+    navigate("/ProductFirst");
   };
   return (
     <div className="App">
