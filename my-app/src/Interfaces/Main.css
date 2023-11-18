@@ -1,6 +1,7 @@
 .atmBox {
   width: 177px;
-  height: 340px;
+  height: 320px;
+  margin-bottom: 10px;
   flex-shrink: 0;
   border-radius: 10px;
   color: white;
@@ -27,5 +28,5 @@
   height: 65px;
   width: 390px;
   position: fixed;
-  bottom: 0;
+  bottom: 15px;
 }

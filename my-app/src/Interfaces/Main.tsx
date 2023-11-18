@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Main.css";
+import "../App.css";
 
 function Main() {
   return (
-    <div>
+    <div className="App">
       <div style={{ height: "59px", display: "flex", alignItems: "center", justifyContent: "center" }}>하나은행</div>
       <div style={{ display: "flex" }}>
         <div className="atmBox" style={{ background: "#008485", marginLeft: "14px" }}>
