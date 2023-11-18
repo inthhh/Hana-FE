@@ -22,7 +22,7 @@ function Main() {
   };
   return (
     <div className="App">
-      <div style={{ height: "59px", display: "flex", alignItems: "center", justifyContent: "center" }}>하나은행</div>
+      <div className="title">하나은행</div>
       <div style={{ display: "flex" }}>
         <div className="atmBox" style={{ background: "#008485", marginLeft: "14px" }} onClick={handleSendClick}>
           송금

@@ -12,7 +12,33 @@ function TicketFirst() {
   };
   return (
     <div>
-      <div>번호표</div>
+      <div className="title">번호표</div>
+      <div style={{ display: "flex" }}>
+        <div className="ticket-bigbox">번호표</div>
+        <div style={{ marginLeft: "20px" }}>
+          <div
+            className="ticket-smallbox"
+            style={{
+              background: "rgba(50, 130, 58, 0.95)",
+              marginBottom: "20px",
+            }}
+          >
+            예금/적금
+            <br />
+            번호표
+          </div>
+          <div className="ticket-smallbox" style={{ background: "#B5B5B5", marginBottom: "20px" }}>
+            대출/외환/투자
+            <br />
+            번호표
+          </div>
+          <div className="ticket-smallbox" style={{ background: "#AD9A5F", marginBottom: "20px" }}>
+            화상 상담
+            <br />
+            번호표
+          </div>
+        </div>
+      </div>
 
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
