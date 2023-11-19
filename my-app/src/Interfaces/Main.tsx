@@ -22,24 +22,22 @@ function Main() {
   };
   return (
     <div className="App">
-      <div className="title">하나은행</div>
+      <div className="title" style={{ marginLeft: "20px" }}>
+        하나은행
+      </div>
       <div style={{ display: "flex" }}>
-        <div className="atmBox" style={{ background: "#008485", marginLeft: "14px" }} onClick={handleSendClick}>
-          송금
+        <div className="atmBox" style={{ background: "#3F7E76", marginLeft: "14px" }} onClick={handleSendClick}>
+          돈 보내기
         </div>
-        <div className="atmBox" style={{ background: "#AD9A5F", marginLeft: "8px" }} onClick={handleTicketClick}>
+        <div className="atmBox" style={{ background: "#529793", marginLeft: "8px" }} onClick={handleTicketClick}>
           번호표 발급
         </div>
       </div>
       <div style={{ display: "flex" }}>
-        <div
-          className="atmBox"
-          style={{ background: "rgba(50, 130, 58, 0.95)", marginLeft: "14px" }}
-          onClick={handleCalendarClick}
-        >
+        <div className="atmBox" style={{ background: "#58AAAA", marginLeft: "14px" }} onClick={handleCalendarClick}>
           캘린더
         </div>
-        <div className="atmBox" style={{ background: "#F88F15", marginLeft: "8px" }} onClick={handleProductClick}>
+        <div className="atmBox" style={{ background: "#7DBABA", marginLeft: "8px" }} onClick={handleProductClick}>
           상품
           <br />
           가입

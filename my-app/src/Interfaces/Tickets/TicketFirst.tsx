@@ -11,11 +11,11 @@ function TicketFirst() {
     navigate("/TicketSecond");
   };
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div className="title">번호표</div>
       <div style={{ display: "flex" }}>
         <div className="ticket-bigbox">번호표</div>
-        <div style={{ marginLeft: "20px" }}>
+        {/* <div style={{ marginLeft: "20px" }}>
           <div
             className="ticket-smallbox"
             style={{
@@ -37,7 +37,7 @@ function TicketFirst() {
             <br />
             번호표
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="buttonContainer">
