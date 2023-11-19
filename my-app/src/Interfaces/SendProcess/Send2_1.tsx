@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setOption } from "../../redux/store"; // setOption import 추가
 
-function SendFirst() {
+function Send2_1() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [selectedOption, setSelectedOption] = useState(null);
@@ -28,18 +28,19 @@ function SendFirst() {
   };
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="title">돈 보내실 방법을 선택해주세요.</div>
-      <div
-        className={`send-box ${selectedOption === "전화번호" ? "selected" : ""}`}
-        onClick={() => handleOptionClick("전화번호")}
-      >
-        전화번호로 돈 보내기
-      </div>
+      <div className="title">이하나</div>
       <div
         className={`send-box ${selectedOption === "계좌번호" ? "selected" : ""}`}
         onClick={() => handleOptionClick("계좌번호")}
       >
-        계좌번호로 돈 보내기
+        내 계좌
+      </div>
+      <div> 돈 보내기</div>
+      <div>
+        {" "}
+        다른 내 계좌
+        <br />
+        선택하기
       </div>
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
@@ -53,4 +54,4 @@ function SendFirst() {
   );
 }
 
-export default SendFirst;
+export default Send2_1;

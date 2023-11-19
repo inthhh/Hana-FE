@@ -11,6 +11,8 @@ import SendFinal from "./Interfaces/SendProcess/SendFinal";
 import MainCal from "./Interfaces/Calendars/MainCal";
 import ProductFirst from "./Interfaces/Products/ProductFirst";
 import TicketFirst from "./Interfaces/Tickets/TicketFirst";
+import Send1_1 from "./Interfaces/SendProcess/Send1_1";
+import Send2_1 from "./Interfaces/SendProcess/Send2_1";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/SendFirst" element={<SendFirst />} />
             <Route path="/SendSecond" element={<SendSecond />} />
+            <Route path="/Send1_1" element={<Send1_1 />} />
+            <Route path="/Send2_1" element={<Send2_1 />} />
             <Route path="/SendFinal" element={<SendFinal />} />
             <Route path="/MainCalendar" element={<MainCal />} />
             <Route path="/ProductFirst" element={<ProductFirst />} />
