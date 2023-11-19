@@ -4,16 +4,23 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setOption } from "../../redux/store"; // setOption import 추가
 
-function Send1_1() {
+function Send1_2() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [selectedOption, setSelectedOption] = useState(null);
   const selectedOption = useSelector((state: any) => state.selectedOption);
   const handleToBefore = () => {
-    navigate("/SendSecond");
+    navigate("/Send1_1");
   };
   const handleToAfter = () => {
-    navigate("/Send1_2");
+    if (selectedOption) {
+      // 선택된 옵션이 있을 때만 다음 페이지로 이동
+      console.log(selectedOption);
+      navigate("/Send1_3");
+    } else {
+      // 선택된 옵션이 없으면 경고 메시지 또는 다른 처리를 수행
+      alert("선택해주세요.");
+    }
   };
 
   const handleOptionClick = (option: any) => {
@@ -21,13 +28,7 @@ function Send1_1() {
   };
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="title">누구에게 돈을 보낼까요?</div>
-      <div
-        className={`send-box ${selectedOption === "계좌번호" ? "selected" : ""}`}
-        onClick={() => handleOptionClick("계좌번호")}
-      >
-        연락처에서 찾기
-      </div>
+      <div>연락처</div>
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
@@ -40,4 +41,4 @@ function Send1_1() {
   );
 }
 
-export default Send1_1;
+export default Send1_2;
