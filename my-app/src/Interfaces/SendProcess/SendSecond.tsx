@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setOption } from "../../redux/store"; // setOption import 추가
+import { setAccountAmount } from "../../redux/store";
 
 interface Account {
   accountCode: string;
@@ -13,7 +13,8 @@ interface Account {
 
 function SendSecond() {
   const [selectedAccount, setSelectedAccount] = useState<Account>();
-  const selectedOption = useSelector((state: any) => state.selectedOption);
+  const selectedOption = useSelector((state: any) => state.selectedOption); //
+  const accountAmount = useSelector((state: any) => state.accountAmount);
   const navigate = useNavigate();
   const [accounts, setAccounts] = useState<Account[]>([]);
   // const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function SendSecond() {
         if (data.code === 200) {
           setAccounts(data.data.accountResponses);
           console.log(data.data.accountResponses);
+          dispatch(setAccountAmount(0));
         } else {
           console.error("Error fetching accounts:", data.message);
         }
@@ -35,45 +37,55 @@ function SendSecond() {
       });
   }, []);
 
+  const dispatch = useDispatch();
+
   const handleToBefore = () => {
     navigate("/SendFirst");
   };
   const handleToAfter = () => {
-    if (selectedOption === "전화번호") navigate("/Send1_1");
-    else navigate("/Send2_1");
+    if (accountAmount && accountAmount > 0) {
+      navigate("/Send1_1");
+    } else {
+      alert("송금 가능한 계좌를 선택해주세요");
+    }
   };
-  const handleAccountClick = (account: any) => {
-    console.log(selectedAccount);
+
+  const handleAccountClick = (account: Account) => {
     setSelectedAccount(account);
+    // Dispatch the selected account's balance to the Redux store
+    dispatch(setAccountAmount(account.balance));
+    console.log(accountAmount);
   };
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div>[{selectedOption}로 송금하기]</div>
-      <div style={{ padding: "5px", fontWeight: "bold" }}>나의 전체계좌</div>
-      <div>내 계좌 : {accounts.length}개 </div>
-      {/* <div
-        className={`send-box ${selectedAccount === 1 ? "selected" : ""}`}
-        style={{ height: "150px", marginBottom: "10px" }}
-        onClick={() => handleAccountClick(1)}
-      >
-        입출금
-        <br />
-        000-000000-00000
-        <br />
-        잔액 : 100,000,000원
-      </div> */}
+      <div style={{ paddingTop: "10px", color: "#008485" }}>[{selectedOption}로 송금하기]</div>
+
+      {/* <div className="sub-title"> */}
+      <div style={{ fontSize: "30px", padding: "16px 0", fontWeight: "bold" }}>나의 전체계좌</div>
+      <div style={{ fontSize: "20px" }}>내 계좌 : {accounts.length}개 </div>
+      {/* </div> */}
+
       {accounts.map((account) => (
         <div
           key={account.accountId}
-          className={`send-box ${selectedAccount && selectedAccount.accountId === account.accountId ? "selected" : ""}`}
+          className={`account-box ${
+            selectedAccount && selectedAccount.accountId === account.accountId ? "selected" : ""
+          }`}
           style={{ height: "150px", marginBottom: "10px" }}
           onClick={() => handleAccountClick(account)}
         >
-          {account.accountCode}
-          <br />
-          {account.accountNumber}
-          <br />
-          잔액 : {account.balance.toLocaleString()}원
+          <div>
+            {account.accountCode}
+            <br />
+            {account.accountNumber}
+            <br />
+            {/* <div style={{color:"#008485"}}> */}
+            <div>
+              잔액 : <span>{account.balance.toLocaleString()}원</span>
+              {/* </div> */}
+            </div>
+          </div>
         </div>
       ))}
       <div className="buttonContainer">
@@ -81,7 +93,7 @@ function SendSecond() {
           &lt; 이전
         </div>
         <div className="afterbtn" onClick={handleToAfter}>
-          보내기 &gt;
+          다음 &gt;
         </div>
       </div>
     </div>
