@@ -1,46 +1,99 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setOption } from "../../redux/store"; // setOption import 추가
+// import { setOption } from "../../redux/store";
+import { setSendAccount } from "../../redux/store";
+import Accountimg from "../../imgs/account.png";
+
+interface Account {
+  accountCode: string;
+  accountId: number;
+  accountNumber: string;
+  balance: number;
+}
 
 function Send2_1() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [selectedOption, setSelectedOption] = useState(null);
+  const [accounts, setAccounts] = useState<Account[]>([]);
   const selectedOption = useSelector((state: any) => state.selectedOption);
+  const sendAccount = useSelector((state: any) => state.sendAccount);
+  const [selectedAccountInfo, setSelectedAccountInfo] = useState<Account | null>(null);
+
   const handleToBefore = () => {
     navigate("/SendSecond");
   };
   const handleToAfter = () => {
-    if (selectedOption) {
-      // 선택된 옵션이 있을 때만 다음 페이지로 이동
-      console.log(selectedOption);
-      navigate("/Send2_2");
-    } else {
-      // 선택된 옵션이 없으면 경고 메시지 또는 다른 처리를 수행
-      alert("돈 보내실 방법을 선택해주세요.");
-    }
+    // console.log(selectedOption);
+    navigate("/Send2_2");
   };
 
-  const handleOptionClick = (option: any) => {
-    dispatch(setOption(option));
-  };
+  useEffect(() => {
+    fetch("https://with-pet-be.org/api/accounts")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.code === 200) {
+          setAccounts(data.data.accountResponses);
+          // console.log(data.data.accountResponses);
+        } else {
+          console.error("Error fetching accounts:", data.message);
+        }
+      })
+      .catch((error) => {
+        // Handle network error
+        console.error("Network error:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Find the account with accountId matching sendAccount
+    const selectedAccount = accounts.find((account) => account.accountId === sendAccount);
+
+    if (selectedAccount) {
+      setSelectedAccountInfo(selectedAccount);
+    }
+  }, [sendAccount, accounts]);
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="title">이하나</div>
+      <div className="sub-title">이하나</div>
       <div
-        className={`send-box ${selectedOption === "계좌번호" ? "selected" : ""}`}
-        onClick={() => handleOptionClick("계좌번호")}
+        className="send-box"
+        // onClick={() => handleOptionClick("계좌번호")}
       >
-        내 계좌
+        <div>
+          내 계좌
+          {selectedAccountInfo && (
+            <>
+              <div>계좌번호: {selectedAccountInfo.accountNumber}</div>
+              <div>잔액: {selectedAccountInfo.balance.toLocaleString()}원</div>
+            </>
+          )}
+        </div>
       </div>
-      <div> 돈 보내기</div>
-      <div>
-        {" "}
-        다른 내 계좌
+      <div
+        style={{
+          background: "#D4D4D4",
+          borderRadius: "10px",
+          width: "330px",
+          height: "72px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "30px",
+          color: "#008485",
+          fontWeight: "bold",
+        }}
+      >
+        돈 보내기
+      </div>
+      <div className="send-box" style={{ height: "100px" }}>
+        다른 계좌에서
         <br />
-        선택하기
+        돈 보내기
+        <img src={Accountimg} width={"90px"} style={{ marginLeft: "20px" }} />
       </div>
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>

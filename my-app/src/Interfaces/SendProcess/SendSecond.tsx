@@ -3,6 +3,7 @@ import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAccountAmount } from "../../redux/store";
+import { setSendAccount } from "../../redux/store";
 
 interface Account {
   accountCode: string;
@@ -15,6 +16,7 @@ function SendSecond() {
   const [selectedAccount, setSelectedAccount] = useState<Account>();
   const selectedOption = useSelector((state: any) => state.selectedOption); //
   const accountAmount = useSelector((state: any) => state.accountAmount);
+  const sendAccount = useSelector((state: any) => state.sendAccount);
   const navigate = useNavigate();
   const [accounts, setAccounts] = useState<Account[]>([]);
   // const dispatch = useDispatch();
@@ -43,8 +45,10 @@ function SendSecond() {
     navigate("/SendFirst");
   };
   const handleToAfter = () => {
-    if (accountAmount && accountAmount > 0) {
+    if (selectedOption === "전화번호" && accountAmount && accountAmount > 0) {
       navigate("/Send1_1");
+    } else if (selectedOption === "계좌번호" && accountAmount && accountAmount > 0) {
+      navigate("/Send2_1");
     } else {
       alert("송금 가능한 계좌를 선택해주세요");
     }
@@ -54,7 +58,9 @@ function SendSecond() {
     setSelectedAccount(account);
     // Dispatch the selected account's balance to the Redux store
     dispatch(setAccountAmount(account.balance));
+    dispatch(setSendAccount(account.accountId));
     console.log(accountAmount);
+    console.log(sendAccount);
   };
 
   return (

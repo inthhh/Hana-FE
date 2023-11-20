@@ -3,9 +3,9 @@ import { legacy_createStore as createStore, Action, AnyAction } from "redux";
 
 // 초기 상태
 interface AppState {
-  selectedOption: string | null; // 전화번호 or 계좌
+  selectedOption: string | null; // 송금 방법
   accountAmount: number | null; // 계좌 잔액
-  // sender: string | null; // 보내는 사람 (삭제)
+  sendAccount: number | null; // 보내는계좌 아이디
   receiver: string | null; // 받는 사람
   receiveAccount: string | null; // 받는사람의 은행
   money: number | null; // 보낼 금액
@@ -14,7 +14,7 @@ interface AppState {
 // 액션 타입 정의
 const SET_OPTION = "SET_OPTION";
 const SET_ACCOUNT_AMOUNT = "SET_ACCOUNT_AMOUNT";
-// const SET_SENDER = "SET_SENDER";
+const SET_SEND_ACCOUNT = "SET_SENDACCOUNT";
 const SET_RECEIVER = "SET_RECEIVER";
 const SET_RECEIVE_ACCOUNT = "SET_RECEIVE_ACCOUNT";
 const SET_MONEY = "SET_MONEY";
@@ -30,10 +30,11 @@ export const setAccountAmount = (amount: number | null): AnyAction => ({
   payload: amount,
 });
 
-// export const setSender = (sender: string | null): AnyAction => ({
-//   type: SET_SENDER,
-//   payload: sender,
-// });
+export const setSendAccount = (sendAccount: number | null): AnyAction => ({
+  // 추가된 부분
+  type: SET_SEND_ACCOUNT,
+  payload: sendAccount,
+});
 
 export const setReceiver = (receiver: string | null): AnyAction => ({
   type: SET_RECEIVER,
@@ -55,7 +56,7 @@ const reducer = (
   state: AppState = {
     selectedOption: null,
     accountAmount: null,
-
+    sendAccount: null,
     receiver: null,
     receiveAccount: null,
     money: null,
@@ -72,6 +73,11 @@ const reducer = (
       return {
         ...state,
         accountAmount: action.payload,
+      };
+    case SET_SEND_ACCOUNT: // 추가된 부분
+      return {
+        ...state,
+        sendAccount: action.payload,
       };
     case SET_RECEIVER:
       return {

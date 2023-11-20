@@ -29,16 +29,19 @@ function Send2_2() {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div className="title">누구에게 보낼까요?</div>
-      <div
-        className={`send-box ${selectedOption === "계좌번호" ? "selected" : ""}`}
-        // onClick={() => handleOptionClick("계좌번호")}
-      >
-        계좌번호 입력하기
+      <div className={`send-box`}>
+        <div>
+          계좌번호 입력하기<div> 입력</div>
+          <div>복사한 계좌번호 붙여넣기</div>
+        </div>
       </div>
-      <div> 입력</div>
-      <div>복사한 계좌번호 붙여넣기</div>
-      <div>은행 선택하기</div>
-      <div>은행 검색</div>
+
+      <div className={`send-box`}>
+        <div>
+          은행 선택하기<div>은행 검색</div>
+        </div>
+      </div>
+
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
