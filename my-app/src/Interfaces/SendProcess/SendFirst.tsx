@@ -32,8 +32,10 @@ function SendFirst() {
       <div
         className={`send-box ${selectedOption === "전화번호" ? "selected" : ""}`}
         onClick={() => handleOptionClick("전화번호")}
+        style={{ display: "flex" }}
       >
-        전화번호로 돈 보내기
+        <div>전화번호로 돈 보내기</div>
+        {/* <img src="" /> */}
       </div>
       <div
         className={`send-box ${selectedOption === "계좌번호" ? "selected" : ""}`}

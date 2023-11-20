@@ -3,6 +3,7 @@ import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setOption } from "../../redux/store"; // setOption import 추가
+import HanaBoy from "../../imgs/효자하나.png";
 
 function Send1_3() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function Send1_3() {
         <br />
         확인해주세요.
       </div>
+      <img src={HanaBoy} style={{ width: "200px" }} />
       <div>성함 : </div>
       <div>대표은행 : </div>
       <div className="buttonContainer">

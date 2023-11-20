@@ -3,6 +3,7 @@ import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setOption } from "../../redux/store"; // setOption import 추가
+import Hanaicon from "../../imgs/hana_icon.jpeg";
 
 function Sendpwd() {
   const dispatch = useDispatch();
@@ -41,28 +42,21 @@ function Sendpwd() {
       <div>
         {/* 키패드 생성 */}
         <div>
-          {[1, 2, 3].map((number) => (
+          {[1, 2, 0, 3].map((number) => (
             <button key={number} className="sendpwd-button" onClick={() => handleKeypadClick(number)}>
-              {number}
+              {number === 0 ? <img src={Hanaicon} alt="Hana" className="keypad-image" /> : number}
             </button>
           ))}
         </div>
         <div>
-          {[4, 5, 6].map((number) => (
+          {[4, 5, 0, 6].map((number) => (
             <button key={number} className="sendpwd-button" onClick={() => handleKeypadClick(number)}>
-              {number}
+              {number === 0 ? <img src={Hanaicon} alt="Hana" className="keypad-image" /> : number}
             </button>
           ))}
         </div>
         <div>
-          {[7, 8, 9].map((number) => (
-            <button key={number} className="sendpwd-button" onClick={() => handleKeypadClick(number)}>
-              {number}
-            </button>
-          ))}
-        </div>
-        <div>
-          {[0].map((number) => (
+          {[7, 8, 9, 0].map((number) => (
             <button key={number} className="sendpwd-button" onClick={() => handleKeypadClick(number)}>
               {number}
             </button>
