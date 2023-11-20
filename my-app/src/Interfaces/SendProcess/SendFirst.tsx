@@ -3,6 +3,8 @@ import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setOption } from "../../redux/store"; // setOption import 추가
+import Phone from "../../imgs/phone.png";
+import Account from "../../imgs/account.png";
 
 function SendFirst() {
   const dispatch = useDispatch();
@@ -28,20 +30,35 @@ function SendFirst() {
   };
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="title">돈 보내실 방법을 선택해주세요.</div>
+      <div className="sub-title">
+        돈 보내실 방법을
+        <br />
+        선택해주세요.
+      </div>
       <div
         className={`send-box ${selectedOption === "전화번호" ? "selected" : ""}`}
         onClick={() => handleOptionClick("전화번호")}
         style={{ display: "flex" }}
       >
-        <div>전화번호로 돈 보내기</div>
+        <div className="btn-text" style={{ display: "flex" }}>
+          <div style={{ marginRight: "20px", paddingTop: "12px" }}>
+            전화번호로
+            <br />돈 보내기
+          </div>
+          <img src={Phone} width={"100px"} />
+        </div>
         {/* <img src="" /> */}
       </div>
       <div
         className={`send-box ${selectedOption === "계좌번호" ? "selected" : ""}`}
         onClick={() => handleOptionClick("계좌번호")}
       >
-        계좌번호로 돈 보내기
+        <div className="btn-text" style={{ display: "flex" }}>
+          <div style={{ marginRight: "20px", paddingTop: "12px" }}>
+            계좌번호로 <br />돈 보내기
+          </div>
+          <img src={Account} width={"100px"} />
+        </div>
       </div>
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
