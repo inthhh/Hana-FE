@@ -15,14 +15,8 @@ function Send1_3() {
     navigate("/Send1_2");
   };
   const handleToAfter = () => {
-    if (selectedOption) {
-      // 선택된 옵션이 있을 때만 다음 페이지로 이동
-      console.log(selectedOption);
-      navigate("/Sendhowmuch");
-    } else {
-      // 선택된 옵션이 없으면 경고 메시지 또는 다른 처리를 수행
-      alert("선택해주세요.");
-    }
+    console.log(selectedOption);
+    navigate("/Sendhowmuch");
   };
 
   // const handleOptionClick = (option: any) => {
