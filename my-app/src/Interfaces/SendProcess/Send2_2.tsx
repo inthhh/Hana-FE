@@ -16,7 +16,7 @@ function Send2_2() {
     if (selectedOption) {
       // 선택된 옵션이 있을 때만 다음 페이지로 이동
       console.log(selectedOption);
-      navigate("/Send2_2");
+      navigate("/Sendhowmuch");
     } else {
       // 선택된 옵션이 없으면 경고 메시지 또는 다른 처리를 수행
       alert("돈 보내실 방법을 선택해주세요.");
@@ -28,20 +28,17 @@ function Send2_2() {
   };
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="title">이하나</div>
+      <div className="title">누구에게 보낼까요?</div>
       <div
         className={`send-box ${selectedOption === "계좌번호" ? "selected" : ""}`}
-        onClick={() => handleOptionClick("계좌번호")}
+        // onClick={() => handleOptionClick("계좌번호")}
       >
-        내 계좌
+        계좌번호 입력하기
       </div>
-      <div> 돈 보내기</div>
-      <div>
-        {" "}
-        다른 내 계좌
-        <br />
-        선택하기
-      </div>
+      <div> 입력</div>
+      <div>복사한 계좌번호 붙여넣기</div>
+      <div>은행 선택하기</div>
+      <div>은행 검색</div>
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
