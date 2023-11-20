@@ -8,12 +8,13 @@ function Sendhowmuch() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [selectedOption, setSelectedOption] = useState(null);
-  // const selectedOption = useSelector((state: any) => state.selectedOption);
+  const selectedOption = useSelector((state: any) => state.selectedOption);
   const money = useSelector((state: any) => state.money);
   const accountAmount = useSelector((state: any) => state.accountAmount);
 
   const handleToBefore = () => {
-    navigate("/Send1_3");
+    if (selectedOption === "전화번호") navigate("/Send1_3");
+    else navigate("/Send2_2");
   };
   const handleToAfter = () => {
     if (money > 0) {
