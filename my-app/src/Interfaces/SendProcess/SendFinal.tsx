@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../Main.css";
-import HanaGirl from "../../imgs/효녀하나.png";
+import HanaGirl from "../../imgs/hanaGirl.png";
 import { useNavigate } from "react-router-dom";
 
 function SendFinal() {

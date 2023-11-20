@@ -3,7 +3,7 @@ import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setOption } from "../../redux/store"; // setOption import 추가
-import HanaBoy from "../../imgs/효자하나.png";
+import HanaBoy from "../../imgs/hanaBoy.png";
 import { reverse } from "dns";
 
 function Send1_3() {

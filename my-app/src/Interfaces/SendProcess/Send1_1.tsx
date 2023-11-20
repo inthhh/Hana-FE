@@ -3,7 +3,7 @@ import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import { setOption } from "../../redux/store"; // setOption import 추가
-import HanaGirl from "../../imgs/효녀하나.png";
+import HanaGirl from "../../imgs/hanaGirl.png";
 import Phone from "../../imgs/phone.png";
 
 function Send1_1() {
