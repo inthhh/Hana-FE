@@ -19,7 +19,8 @@ function Sendhowmuch() {
   const handleToAfter = () => {
     if (money > 0) {
       // 선택된 옵션이 있을 때만 다음 페이지로 이동
-      navigate("/Sendpwd");
+      // navigate("/Sendpwd");
+      navigate("/Warning");
     } else {
       alert("금액을 입력하거나 선택해주세요.");
     }

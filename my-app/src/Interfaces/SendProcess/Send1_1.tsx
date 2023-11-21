@@ -25,7 +25,7 @@ function Send1_1() {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div className="sub-title">누구에게 보낼까요?</div>
-      <img src={HanaGirl} style={{ width: "200px" }} />
+      <img src={HanaGirl} style={{ width: "180px" }} />
       <div className={`send-box ${option === "find" ? "selected" : ""}`} onClick={() => handleClick("find")}>
         <div>
           <div className="btn-text"> 연락처에서 찾기</div>

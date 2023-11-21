@@ -15,14 +15,7 @@ function Send2_2() {
     navigate("/Send2_1");
   };
   const handleToAfter = () => {
-    // if (selectedOption) {
-
-    // console.log(selectedOption);
     navigate("/Sendhowmuch");
-    // } else {
-
-    //   alert("돈 보내실 방법을 선택해주세요.");
-    // }
   };
 
   const handleOptionClick = (option: any) => {
@@ -30,8 +23,10 @@ function Send2_2() {
   };
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="title">누구에게 보낼까요?</div>
-      <div className={`send-box`} style={{ height: "250px", borderRadius: "50px" }}>
+      <div className="sub-title" style={{ height: "50px", marginTop: "20px" }}>
+        누구에게 보낼까요?
+      </div>
+      <div className={`send-box`} style={{ height: "200px", borderRadius: "50px" }}>
         <div>
           계좌번호 입력하기
           <div>
@@ -68,7 +63,7 @@ function Send2_2() {
         </div>
       </div>
 
-      <div className={`send-box`} style={{ height: "250px", borderRadius: "50px" }}>
+      <div className={`send-box`} style={{ height: "180px", borderRadius: "50px", marginTop: "10px" }}>
         <div>
           은행 선택하기
           <input

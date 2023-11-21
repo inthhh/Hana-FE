@@ -58,7 +58,9 @@ function Send2_1() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="sub-title">이하나</div>
+      <div className="sub-title" style={{ height: "50px", marginTop: "20px" }}>
+        이하나
+      </div>
       <div
         className="send-box"
         // onClick={() => handleOptionClick("계좌번호")}
@@ -89,7 +91,7 @@ function Send2_1() {
       >
         돈 보내기
       </div>
-      <div className="send-box" style={{ height: "100px" }}>
+      <div className="send-box" style={{ height: "100px" }} onClick={handleToBefore}>
         다른 계좌에서
         <br />
         돈 보내기

@@ -18,7 +18,7 @@ function Sendpwd() {
   const [password, setPassword] = useState(""); // 비밀번호 상태 추가
 
   const handleToBefore = () => {
-    navigate("/Sendhowmuch");
+    navigate("/Warning");
   };
   const handleToAfter = () => {
     if (password.length === 4) {
@@ -67,7 +67,7 @@ function Sendpwd() {
         <br />
         비밀번호 입력
       </div>
-      <div>
+      <div style={{ marginBottom: "30px" }}>
         {/* 비밀번호 입력창 */}
         <input type="password" value={password} readOnly />
       </div>
@@ -94,8 +94,8 @@ function Sendpwd() {
             </button>
           ))}
         </div>
-        <div style={{ display: "flex", justifyContent: "flex-end", marginRight: "20px" }} onClick={handleDeleteClick}>
-          <img src={Delete} height={"50px"} alt="Delete icon" />
+        <div style={{ display: "flex", justifyContent: "flex-end", marginRight: "26px" }} onClick={handleDeleteClick}>
+          <img src={Delete} height={"40px"} alt="Delete icon" />
         </div>
       </div>
 
