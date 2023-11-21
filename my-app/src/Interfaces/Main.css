@@ -203,3 +203,16 @@ span {
   align-items: center;
   justify-content: center;
 }
+
+.warning-msg-box {
+  background: rgba(0, 132, 133, 0.2);
+  height: 100vh;
+  width: 100%;
+}
+
+.warning-msg {
+  margin: 20px 0;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+}
