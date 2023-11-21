@@ -9,18 +9,20 @@ function Send2_2() {
   const navigate = useNavigate();
   // const [selectedOption, setSelectedOption] = useState(null);
   const selectedOption = useSelector((state: any) => state.selectedOption);
+  const [accountNumber, setAccountNumber] = useState("");
+
   const handleToBefore = () => {
     navigate("/Send2_1");
   };
   const handleToAfter = () => {
-    if (selectedOption) {
-      // 선택된 옵션이 있을 때만 다음 페이지로 이동
-      console.log(selectedOption);
-      navigate("/Sendhowmuch");
-    } else {
-      // 선택된 옵션이 없으면 경고 메시지 또는 다른 처리를 수행
-      alert("돈 보내실 방법을 선택해주세요.");
-    }
+    // if (selectedOption) {
+
+    // console.log(selectedOption);
+    navigate("/Sendhowmuch");
+    // } else {
+
+    //   alert("돈 보내실 방법을 선택해주세요.");
+    // }
   };
 
   const handleOptionClick = (option: any) => {
@@ -29,16 +31,60 @@ function Send2_2() {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div className="title">누구에게 보낼까요?</div>
-      <div className={`send-box`}>
+      <div className={`send-box`} style={{ height: "250px", borderRadius: "50px" }}>
         <div>
-          계좌번호 입력하기<div> 입력</div>
-          <div>복사한 계좌번호 붙여넣기</div>
+          계좌번호 입력하기
+          <div>
+            <input
+              type="text"
+              value={accountNumber}
+              onChange={(e) => setAccountNumber(e.target.value)}
+              placeholder="입력"
+              style={{
+                backgroundColor: "lightgray",
+                textAlign: "center",
+                width: "80%",
+                height: "50px",
+                fontSize: "16px",
+                margin: "10px auto",
+              }}
+            />
+          </div>
+          <div
+            style={{
+              width: "300px",
+              background: "gray",
+              color: "white",
+              height: "50px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "10px",
+            }}
+          >
+            {" "}
+            복사한 계좌번호 붙여넣기
+          </div>
         </div>
       </div>
 
-      <div className={`send-box`}>
+      <div className={`send-box`} style={{ height: "250px", borderRadius: "50px" }}>
         <div>
-          은행 선택하기<div>은행 검색</div>
+          은행 선택하기
+          <input
+            type="text"
+            // value={accountNumber}
+            // onChange={(e) => setAccountNumber(e.target.value)}
+            placeholder="은행 검색"
+            style={{
+              backgroundColor: "lightgray",
+              textAlign: "center",
+              width: "80%",
+              height: "50px",
+              fontSize: "16px",
+              margin: "10px auto",
+            }}
+          />
         </div>
       </div>
 
