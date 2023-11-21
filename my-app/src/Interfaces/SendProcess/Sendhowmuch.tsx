@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setMoney } from "../../redux/store";
+import { getSpeech } from "../../getSpeech";
 
 function Sendhowmuch() {
   const dispatch = useDispatch();

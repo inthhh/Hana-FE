@@ -6,6 +6,7 @@ import Calendarimg from "../imgs/calendar_img.png";
 import Productimg from "../imgs/product_img.png";
 import Sendimg from "../imgs/send_img.png";
 import Ticketimg from "../imgs/ticket_img.png";
+import hanaicon from "../imgs/hana_icon.jpeg";
 
 function Main() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function Main() {
   return (
     <div className="App">
       <div className="title" style={{ marginLeft: "20px" }}>
+        <img src={hanaicon} width={"20px"} style={{ marginRight: "2px" }} />
         하나은행
       </div>
       <div style={{ display: "flex" }}>

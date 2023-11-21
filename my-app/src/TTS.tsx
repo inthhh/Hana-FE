@@ -20,14 +20,7 @@ function TTS() {
 
   return (
     <div className="App">
-      <div>
-        {/* <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a> */}
-      </div>
+      <div></div>
       <h1 style={{ paddingTop: "30px", marginBottom: "20px" }}>TTS(한국어)</h1>
       <p>텍스트를 음성으로</p>
       <div className="box">

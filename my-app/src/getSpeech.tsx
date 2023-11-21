@@ -13,7 +13,7 @@ export const getSpeech = (text: any) => {
     window.speechSynthesis.onvoiceschanged = setVoiceList;
   }
 
-  const speech = (txt: string | undefined) => {
+  const speech = (txt: string | undefined, rate: number = 0.8) => {
     const lang = "ko-KR";
     const utterThis = new SpeechSynthesisUtterance(txt);
 
@@ -31,6 +31,9 @@ export const getSpeech = (text: any) => {
     } else {
       return;
     }
+
+    // Set the speech rate
+    utterThis.rate = rate;
 
     //utterance를 재생(speak)한다.
     window.speechSynthesis.speak(utterThis);
