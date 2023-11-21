@@ -38,6 +38,18 @@ function Sendpwd() {
   const handleDeleteClick = () => {
     setPassword((prevPassword) => prevPassword.slice(0, -1));
   };
+
+  const renderPasswordCircles = () => {
+    console.log("pwd circles"); // 안됨
+    const circles = [];
+
+    for (let i = 0; i < 4; i++) {
+      circles.push(<div key={i} className={`password-circle ${i < password.length ? "filled" : ""}`}></div>);
+    }
+
+    return circles;
+  };
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div className="sub-title">
@@ -67,9 +79,18 @@ function Sendpwd() {
         <br />
         비밀번호 입력
       </div>
-      <div style={{ marginBottom: "30px" }}>
+      <div style={{ marginTop: "5px", marginBottom: "20px" }}>
         {/* 비밀번호 입력창 */}
-        <input type="password" value={password} readOnly />
+        <input
+          type="password"
+          value={password}
+          readOnly
+          style={{ width: "200px", height: "24px", fontSize: "30px", textAlign: "center" }}
+        />
+        {/* <div style={{ marginTop: "5px", marginBottom: "20px", display: "flex" }}>
+          
+          {renderPasswordCircles()}
+        </div> */}
       </div>
       <div>
         {/* 키패드 생성 */}
