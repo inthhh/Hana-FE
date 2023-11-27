@@ -48,11 +48,11 @@ function Send2_1() {
   }, []);
 
   useEffect(() => {
-    // Find the account with accountId matching sendAccount
-    const selectedAccount = accounts.find((account) => account.accountId === sendAccount);
+    const selectedAccount = accounts.find((account) => account.accountNumber === sendAccount);
 
     if (selectedAccount) {
       setSelectedAccountInfo(selectedAccount);
+      console.log(selectedAccount);
     }
   }, [sendAccount, accounts]);
 

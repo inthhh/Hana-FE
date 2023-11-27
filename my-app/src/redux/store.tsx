@@ -5,10 +5,11 @@ import { legacy_createStore as createStore, Action, AnyAction } from "redux";
 interface AppState {
   selectedOption: string | null; // 송금 방법
   accountAmount: number | null; // 계좌 잔액
-  sendAccount: number | null; // 보내는계좌 아이디
+  sendAccount: number | null; // 보내는 계좌번호
   receiver: string | null; // 받는 사람
   receiveAccount: string | null; // 받는사람의 은행
   money: number | null; // 보낼 금액
+  // sendAccountNum: number | null; // 보내는 계좌번호
 }
 
 // 액션 타입 정의

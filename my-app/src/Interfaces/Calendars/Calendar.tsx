@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../App.css";
+import { useNavigate } from "react-router-dom";
 
 interface CalendarProps {
   year: number;
@@ -19,7 +20,7 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, onChangeMonth }) => {
     const days = [];
     for (let i = 1; i <= numDays; i++) {
       days.push(
-        <div key={i} className="day">
+        <div key={i} className="day" onClick={() => handleDateClick(i)}>
           <span className="date">{i}</span>
           <div className="events">
             {/* 여기에 각 날짜의 일정을 추가할 수 있는 입력 필드나 버튼을 넣을 수 있습니다 */}
@@ -33,13 +34,14 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, onChangeMonth }) => {
     }
     return days;
   };
-  //   const handlePrevMonth = () => {
-  //     onChangeMonth(month - 1);
-  //   };
 
-  //   const handleNextMonth = () => {
-  //     onChangeMonth(month + 1);
-  //   };
+  const navigate = useNavigate();
+
+  const handleDateClick = (day: number) => {
+    // 클릭한 날짜의 경로를 동적으로 생성하여 페이지 이동
+    navigate(`/schedule/${year}/${month + 1}/${day}`);
+  };
+
   const handlePrevMonth = () => {
     let newYear = year;
     let newMonth = month - 1;

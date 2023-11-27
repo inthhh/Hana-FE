@@ -47,6 +47,15 @@ function Sendhowmuch() {
     }
   };
 
+  //   const message = (nextLocation: Location): boolean => {
+  // 		// navigation block이 필요할 경우
+  //     if (hasToBlock) {
+  // 			// 원하는 작업
+  //       return false;
+  //     }
+  //     return true;
+  // };
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div className="sub-title">

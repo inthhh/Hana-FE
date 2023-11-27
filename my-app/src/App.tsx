@@ -19,6 +19,7 @@ import Send2_2 from "./Interfaces/SendProcess/Send2_2";
 import Sendhowmuch from "./Interfaces/SendProcess/Sendhowmuch";
 import Sendpwd from "./Interfaces/SendProcess/Sendpwd";
 import Warning from "./Interfaces/SendProcess/Warning";
+import Schedule from "./Interfaces/Calendars/Schedule";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/Warning" element={<Warning />} />
             <Route path="/SendFinal" element={<SendFinal />} />
             <Route path="/MainCalendar" element={<MainCal />} />
+            <Route path="/schedule/:year/:month/:day" element={<Schedule />} />
             <Route path="/ProductFirst" element={<ProductFirst />} />
             <Route path="/TicketFirst" element={<TicketFirst />} />
           </Routes>
