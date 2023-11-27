@@ -22,10 +22,7 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, onChangeMonth }) => {
       days.push(
         <div key={i} className="day" onClick={() => handleDateClick(i)}>
           <span className="date">{i}</span>
-          <div className="events">
-            {/* 여기에 각 날짜의 일정을 추가할 수 있는 입력 필드나 버튼을 넣을 수 있습니다 */}
-            일정
-          </div>
+          {/* <div className="events">일정</div> */}
         </div>
       );
     }

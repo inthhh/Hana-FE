@@ -15,7 +15,7 @@ function MainCal() {
   const navigate = useNavigate();
 
   const handleToBefore = () => {
-    navigate("/SendFirst");
+    navigate("/");
   };
   return (
     <div>
