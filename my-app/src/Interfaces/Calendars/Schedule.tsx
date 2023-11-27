@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Main.css";
 import { useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-
-// Schedule.tsx
 import { useParams } from "react-router-dom";
+
+interface ScheduleItem {
+  houseName: string;
+  receiptEndDate: string;
+  address: string;
+}
 
 const Schedule: React.FC = () => {
   const { year, month, day } = useParams();
@@ -23,11 +26,37 @@ const Schedule: React.FC = () => {
 
   const dayOfWeek = getDayOfWeek(year, month, day);
 
+  const [scheduleData, setScheduleData] = useState<ScheduleItem[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://with-pet-be.org/api/calendar?year=${year}&month=${month}&day=${day}`);
+        const data = await response.json();
+        setScheduleData(data.data);
+      } catch (error) {
+        console.error("Error fetching schedule data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h2>
         {year}년 {month}월 {day}일 {dayOfWeek}요일
       </h2>
+      {/* api에서 불러온 정보 리스트*/}
+      {scheduleData?.map((item, index) => (
+        <div className="send-box" key={index}>
+          <div>
+            <p>{item.houseName}</p>
+            <p>{item.receiptEndDate}</p>
+            <p>{item.address}</p>
+          </div>
+        </div>
+      ))}
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
