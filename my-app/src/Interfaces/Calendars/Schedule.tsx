@@ -44,16 +44,16 @@ const Schedule: React.FC = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <h2>
+      <h2 style={{ marginTop: "10px" }}>
         {year}년 {month}월 {day}일 {dayOfWeek}요일
       </h2>
       {/* api에서 불러온 정보 리스트*/}
       {scheduleData?.map((item, index) => (
-        <div className="send-box" key={index}>
+        <div className="send-box" style={{ marginTop: "10px" }} key={index}>
           <div>
-            <p>{item.houseName}</p>
-            <p>{item.receiptEndDate}</p>
-            <p>{item.address}</p>
+            <p style={{ fontWeight: "bold" }}>{item.houseName}</p>
+            <p style={{ marginTop: "5px", fontSize: "16px" }}>청약마감일 : {item.receiptEndDate}</p>
+            <p style={{ fontSize: "16px" }}>{item.address}</p>
           </div>
         </div>
       ))}
