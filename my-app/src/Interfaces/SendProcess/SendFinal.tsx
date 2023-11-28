@@ -48,6 +48,32 @@ function SendFinal() {
         .catch((error) => {
           console.error("API 호출 오류", error);
         });
+    } else {
+      console.log("돈 빠져나가는 계좌(전화번호ver)", sendAccount);
+      const requestData = {
+        toAccountNumber: 0,
+        accountId: sendAccount,
+        amount: money,
+      };
+
+      fetch("https://with-pet-be.org/api/remit/number", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.code === 200) {
+            console.log("송금 성공");
+          } else {
+            console.error("송금 실패", data.message);
+          }
+        })
+        .catch((error) => {
+          console.error("API 호출 오류", error);
+        });
     }
   }, [selectedOption, receiveAccount, money]);
 
