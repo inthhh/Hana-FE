@@ -7,6 +7,7 @@ import Productimg from "../imgs/product_img.png";
 import Sendimg from "../imgs/send_img.png";
 import Ticketimg from "../imgs/ticket_img.png";
 import hanaicon from "../imgs/hana_icon.jpeg";
+import STT from "../STT";
 
 function Main() {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ function Main() {
       <div className="title" style={{ marginLeft: "20px" }}>
         <img src={hanaicon} width={"20px"} style={{ marginRight: "2px" }} />
         하나은행
+        <STT />
       </div>
       <div style={{ display: "flex" }}>
         <div className="atmBox" style={{ background: "#3F7E76", marginLeft: "14px" }} onClick={handleSendClick}>

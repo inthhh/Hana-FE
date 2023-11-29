@@ -3,31 +3,37 @@ import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognitio
 
 const STT: React.FC = () => {
   const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
-
   const [scrollState, setScrollState] = useState(0);
+  const [guide, setGuide] = useState("");
+
   const word = transcript.split(" ");
 
-  //   console.log(transcript);
+  const checking = async () => {
+    try {
+      console.log("인식된 문장 : ", word[word.length - 1]);
+      const response = await fetch("https://with-pet-be.org/api/voice", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userVoice: word[word.length - 1],
+        }),
+      });
 
-  //   const prevButton = () => {
-  //     if (scrollState === 0) {
-  //       setScrollState(imageList.length - 1);
-  //     } else {
-  //       setScrollState(scrollState - 1);
-  //     }
-  //   };
+      if (response.ok) {
+        const result = await response.json();
+        console.log("API Response:", result);
 
-  //   const nextButton = () => {
-  //     if (scrollState === imageList.length - 1) {
-  //       setScrollState(0);
-  //     } else {
-  //       setScrollState(scrollState + 1);
-  //     }
-  //   };
-
-  const checking = () => {
-    console.log("인식된 문장 : ", word[word.length - 1]);
-    // setSpeakWords(word[word.length - 1]);
+        // Update state with the received guide value
+        setGuide(result.data.guide);
+        console.log(result.data.guide);
+      } else {
+        console.error("API Error:", response.statusText);
+      }
+    } catch (error) {
+      console.error("API Error:");
+    }
   };
 
   useEffect(() => {
@@ -40,14 +46,14 @@ const STT: React.FC = () => {
 
   return (
     <div>
-      <h1 style={{ paddingTop: "30px", marginBottom: "20px" }}>STT(한국어)</h1>
-      <p>마이크 : {listening ? "on" : "off"}</p>
-      <button onClick={() => SpeechRecognition.startListening({ continuous: true, language: "ko" })}>Start</button>
-      <button onClick={SpeechRecognition.stopListening}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button>
-      <p>
-        인식된 문장 : <br />"{transcript}"
-      </p>
+      <div style={{ display: "flex", marginLeft: "100px" }}>
+        <p style={{ fontSize: "10px", marginRight: "10px" }}>마이크 상태: {listening ? "on" : "off"}</p>
+
+        <button onClick={() => SpeechRecognition.startListening({ continuous: true, language: "ko" })}>Start</button>
+        <button onClick={SpeechRecognition.stopListening}>Stop</button>
+      </div>
+      {/* <p>인식된 문장 : {transcript}</p> */}
+      {/* <p>가이드 값: {guide}</p> */}
     </div>
   );
 };

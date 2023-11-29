@@ -57,9 +57,18 @@ const Schedule: React.FC = () => {
           </div>
         </div>
       ))}
-      <div className="send-box" style={{ height: "50px", background: "rgba(0, 132, 133, 0.20)", fontWeight: "bold" }}>
-        <span style={{ fontWeight: "bold" }}>복지서비스&nbsp;</span> 알아보기
-      </div>
+      <a
+        href="https://m.bokjiro.go.kr/ssis-tem/twataa/wlfareInfo/moveTWAT52005M.do"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div
+          className="send-box"
+          style={{ height: "50px", background: "rgba(0, 132, 133, 0.20)", fontWeight: "bold", color: "black" }}
+        >
+          <span style={{ fontWeight: "bold" }}>복지서비스&nbsp;</span> 알아보기
+        </div>
+      </a>
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
