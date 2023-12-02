@@ -66,6 +66,9 @@ function SendSecond() {
     }
   };
 
+  const [selectedClass, setSelectedClass] = useState("");
+  const [afterbtnflash, setafterbtnflash] = useState("afterbtn");
+
   const handleAccountClick = (account: Account) => {
     setSelectedAccount(account);
     // Dispatch the selected account's balance to the Redux store
@@ -73,6 +76,9 @@ function SendSecond() {
     dispatch(setSendAccount(account.accountId));
     console.log(accountAmount);
     console.log(sendAccount);
+    setSelectedClass("none");
+    setafterbtnflash("afterbtn-flash");
+    console.log(afterbtnflash);
   };
 
   useEffect(() => {
@@ -122,7 +128,7 @@ function SendSecond() {
         <div
           key={account.accountId}
           className={`account-box ${
-            selectedAccount && selectedAccount.accountId === account.accountId ? "selected" : ""
+            selectedAccount && selectedAccount.accountId === account.accountId ? "selected" : selectedClass
           }`}
           style={{ height: "150px", marginBottom: "10px" }}
           onClick={() => handleAccountClick(account)}
@@ -144,7 +150,7 @@ function SendSecond() {
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
         </div>
-        <div className="afterbtn" onClick={handleToAfter}>
+        <div className={afterbtnflash} onClick={handleToAfter}>
           다음 &gt;
         </div>
       </div>
