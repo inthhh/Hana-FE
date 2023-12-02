@@ -17,6 +17,18 @@ function Warning() {
     navigate("/Sendpwd");
   };
 
+  const [voiceGuide, setVoiceGuide] = useState("");
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
+
   // useEffect(() => {
   //   // Run on component mount
   //   console.log("Warning component mounted");
@@ -36,7 +48,6 @@ function Warning() {
   // }, []);
 
   const selectedOption = useSelector((state: any) => state.selectedOption);
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
 
   useEffect(() => {
     const fetchData = async () => {

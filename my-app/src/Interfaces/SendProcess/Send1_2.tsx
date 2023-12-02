@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setReceiver } from "../../redux/store";
 import { setReceiveAccount } from "../../redux/store";
+import { getSpeech } from "../../getSpeech";
 
 interface Number {
   toCustomerId: number;
@@ -21,6 +22,18 @@ function Send1_2() {
   // const selectedOption = useSelector((state: any) => state.selectedOption);
   const receiver = useSelector((state: any) => state.receiver);
   const receiveAccount = useSelector((state: any) => state.receiveAccount);
+
+  const [voiceGuide, setVoiceGuide] = useState("");
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
 
   const [numbers, setNumbers] = useState<Number[]>([]);
   useEffect(() => {
@@ -63,7 +76,6 @@ function Send1_2() {
   };
 
   const selectedOption = useSelector((state: any) => state.selectedOption);
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
 
   useEffect(() => {
     const fetchData = async () => {

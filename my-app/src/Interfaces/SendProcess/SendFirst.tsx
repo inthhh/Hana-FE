@@ -2,40 +2,32 @@ import React, { useEffect, useState } from "react";
 import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setOption } from "../../redux/store"; // setOption import 추가
+import { setOption } from "../../redux/store";
 import Phone from "../../imgs/phone.png";
 import Account from "../../imgs/account.png";
+import { getSpeech } from "../../getSpeech"; // Import the text-to-speech function
+import { useLocation } from "react-router-dom";
 
 function SendFirst() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const [selectedOption, setSelectedOption] = useState(null);
   const selectedOption = useSelector((state: any) => state.selectedOption);
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
-
-  const handleToBefore = () => {
-    navigate("/");
-  };
-  const handleToAfter = () => {
-    if (selectedOption) {
-      // 선택된 옵션이 있을 때만 다음 페이지로 이동
-      console.log(selectedOption);
-      navigate("/SendSecond");
-    } else {
-      // 선택된 옵션이 없으면 경고 메시지 또는 다른 처리를 수행
-      alert("돈 보내실 방법을 선택해주세요.");
-    }
-  };
-
-  const handleOptionClick = (option: any) => {
-    dispatch(setOption(option));
-  };
+  const [voiceGuide, setVoiceGuide] = useState("");
 
   useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
+
+  useEffect(() => {
+    console.log("SendFirst component mounted");
     const fetchData = async () => {
       try {
-        // const remitCode = selectedOption === "계좌번호" ? "ACCOUNT" : "PHONE";
-        // console.log(remitCode);
         const response = await fetch("https://with-pet-be.org/api/voice/guide", {
           method: "POST",
           headers: {
@@ -61,9 +53,25 @@ function SendFirst() {
       }
     };
 
-    // Call the API when the component mounts
     fetchData();
-  }, [selectedOption]); // Dependency array to ensure the API call is triggered when selectedOption changes
+  }, []);
+
+  const handleToBefore = () => {
+    navigate("/");
+  };
+
+  // console.log(textToSpeechInitiated);
+  const handleToAfter = () => {
+    if (selectedOption) {
+      navigate("/SendSecond");
+    } else {
+      alert("돈 보내실 방법을 선택해주세요.");
+    }
+  };
+
+  const handleOptionClick = (option: any) => {
+    dispatch(setOption(option));
+  };
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -82,9 +90,8 @@ function SendFirst() {
             전화번호로
             <br />돈 보내기
           </div>
-          <img src={Phone} width={"100px"} />
+          <img src={Phone} width={"100px"} alt="phone-icon" />
         </div>
-        {/* <img src="" /> */}
       </div>
       <div
         className={`send-box ${selectedOption === "계좌번호" ? "selected" : ""}`}
@@ -94,7 +101,7 @@ function SendFirst() {
           <div style={{ marginRight: "20px", paddingTop: "12px" }}>
             계좌번호로 <br />돈 보내기
           </div>
-          <img src={Account} width={"100px"} />
+          <img src={Account} width={"100px"} alt="account-icon" />
         </div>
       </div>
       <div className="buttonContainer">

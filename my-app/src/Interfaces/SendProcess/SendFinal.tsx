@@ -4,10 +4,22 @@ import HanaGirl from "../../imgs/hanaGirl.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setOption, setSendAccount } from "../../redux/store";
+import { getSpeech } from "../../getSpeech";
 
 function SendFinal() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [voiceGuide, setVoiceGuide] = useState("");
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
 
   const handleToAfter = () => {
     navigate("/");
@@ -78,7 +90,6 @@ function SendFinal() {
   }, [selectedOption, receiveAccount, money]);
 
   // const selectedOption = useSelector((state: any) => state.selectedOption);
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
 
   useEffect(() => {
     const fetchData = async () => {

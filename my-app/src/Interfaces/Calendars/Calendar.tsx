@@ -73,13 +73,17 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, onChangeMonth }) => {
         <button onClick={handleNextMonth}>&gt;</button>
       </div>
       <div className="days">
-        <div className="day-label">일</div>
+        <div className="day-label" style={{ color: "red" }}>
+          일
+        </div>
         <div className="day-label">월</div>
         <div className="day-label">화</div>
         <div className="day-label">수</div>
         <div className="day-label">목</div>
         <div className="day-label">금</div>
-        <div className="day-label">토</div>
+        <div className="day-label" style={{ color: "blue" }}>
+          토
+        </div>
         {renderDays()}
       </div>
     </div>

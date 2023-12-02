@@ -13,6 +13,18 @@ function Sendhowmuch() {
   const money = useSelector((state: any) => state.money);
   const accountAmount = useSelector((state: any) => state.accountAmount);
 
+  const [voiceGuide, setVoiceGuide] = useState("");
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
+
   const handleToBefore = () => {
     if (selectedOption === "전화번호") navigate("/Send1_3");
     else navigate("/Send2_2");
@@ -48,7 +60,6 @@ function Sendhowmuch() {
   };
 
   // const selectedOption = useSelector((state: any) => state.selectedOption);
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
 
   useEffect(() => {
     const fetchData = async () => {

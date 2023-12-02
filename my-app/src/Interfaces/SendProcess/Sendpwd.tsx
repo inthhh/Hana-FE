@@ -7,6 +7,7 @@ import { setReceiveAccount } from "../../redux/store";
 import { setMoney } from "../../redux/store";
 import Hanaicon from "../../imgs/hana_icon.jpeg";
 import Delete from "../../imgs/delete_icon.png";
+import { getSpeech } from "../../getSpeech";
 
 function Sendpwd() {
   const dispatch = useDispatch();
@@ -16,6 +17,18 @@ function Sendpwd() {
   const receiveAccount = useSelector((state: any) => state.receiveAccount);
   const receiver = useSelector((state: any) => state.receiver);
   const [password, setPassword] = useState(""); // 비밀번호 상태 추가
+
+  const [voiceGuide, setVoiceGuide] = useState("");
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
 
   const handleToBefore = () => {
     navigate("/Warning");
@@ -51,7 +64,6 @@ function Sendpwd() {
   };
 
   const selectedOption = useSelector((state: any) => state.selectedOption);
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
 
   useEffect(() => {
     const fetchData = async () => {

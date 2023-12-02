@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAccountAmount } from "../../redux/store";
 import { setSendAccount } from "../../redux/store";
+import { getSpeech } from "../../getSpeech"; // Import the text-to-speech function
 
 interface Account {
   accountCode: string;
@@ -20,6 +21,17 @@ function SendSecond() {
   const navigate = useNavigate();
   const [accounts, setAccounts] = useState<Account[]>([]);
   // const dispatch = useDispatch();
+  const [voiceGuide, setVoiceGuide] = useState("");
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
 
   useEffect(() => {
     fetch("https://with-pet-be.org/api/accounts")
@@ -62,8 +74,6 @@ function SendSecond() {
     console.log(accountAmount);
     console.log(sendAccount);
   };
-
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
 
   useEffect(() => {
     const fetchData = async () => {

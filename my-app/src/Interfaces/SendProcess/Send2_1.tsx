@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { setOption } from "../../redux/store";
 import { setSendAccount } from "../../redux/store";
 import Accountimg from "../../imgs/account.png";
+import { getSpeech } from "../../getSpeech"; // Import the text-to-speech function
 
 interface Account {
   accountCode: string;
@@ -14,6 +15,17 @@ interface Account {
 }
 
 function Send2_1() {
+  const [voiceGuide, setVoiceGuide] = useState("");
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
   // const dispatch = useDispatch();
   const navigate = useNavigate();
   // const [selectedOption, setSelectedOption] = useState(null);
@@ -55,8 +67,6 @@ function Send2_1() {
       console.log(selectedAccount);
     }
   }, [sendAccount, accounts]);
-
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
 
   useEffect(() => {
     const fetchData = async () => {

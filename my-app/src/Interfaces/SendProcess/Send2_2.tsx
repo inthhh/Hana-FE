@@ -3,6 +3,7 @@ import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setOption } from "../../redux/store"; // setOption import 추가
+import { getSpeech } from "../../getSpeech";
 
 function Send2_2() {
   const dispatch = useDispatch();
@@ -10,6 +11,17 @@ function Send2_2() {
   // const [selectedOption, setSelectedOption] = useState(null);
   const selectedOption = useSelector((state: any) => state.selectedOption);
   const [accountNumber, setAccountNumber] = useState("");
+  const [voiceGuide, setVoiceGuide] = useState("");
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
 
   const handleToBefore = () => {
     navigate("/Send2_1");
@@ -21,9 +33,6 @@ function Send2_2() {
   const handleOptionClick = (option: any) => {
     dispatch(setOption(option));
   };
-
-  // const selectedOption = useSelector((state: any) => state.selectedOption);
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
 
   useEffect(() => {
     const fetchData = async () => {

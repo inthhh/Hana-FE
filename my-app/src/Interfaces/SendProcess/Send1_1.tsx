@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { setOption } from "../../redux/store"; // setOption import 추가
 import HanaGirl from "../../imgs/hanaGirl.png";
 import Phone from "../../imgs/phone.png";
+import { getSpeech } from "../../getSpeech"; // Import the text-to-speech function
 
 function Send1_1() {
   const dispatch = useDispatch();
@@ -25,7 +26,17 @@ function Send1_1() {
     setOption(n);
   };
 
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
+  const [voiceGuide, setVoiceGuide] = useState("");
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
 
   useEffect(() => {
     const fetchData = async () => {

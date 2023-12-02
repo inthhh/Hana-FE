@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setOption } from "../../redux/store"; // setOption import 추가
 import HanaBoy from "../../imgs/hanaBoy.png";
 import { reverse } from "dns";
+import { getSpeech } from "../../getSpeech";
 
 function Send1_3() {
   const dispatch = useDispatch();
@@ -19,15 +20,23 @@ function Send1_3() {
     navigate("/Sendhowmuch");
   };
 
+  const [voiceGuide, setVoiceGuide] = useState("");
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
   // const handleOptionClick = (option: any) => {
   //   dispatch(setOption(option));
   // };
 
   const receiver = useSelector((state: any) => state.receiver);
   const receiveAccount = useSelector((state: any) => state.receiveAccount);
-
-  // const selectedOption = useSelector((state: any) => state.selectedOption);
-  const [voiceGuide, setVoiceGuide] = useState(""); // Added state for voiceGuide
 
   useEffect(() => {
     const fetchData = async () => {

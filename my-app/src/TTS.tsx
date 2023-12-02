@@ -21,8 +21,8 @@ function TTS() {
   return (
     <div className="App">
       <div></div>
-      <h1 style={{ paddingTop: "30px", marginBottom: "20px" }}>TTS(한국어)</h1>
-      <p>텍스트를 음성으로</p>
+      {/* <h1 style={{ paddingTop: "30px", marginBottom: "20px" }}>TTS(한국어)</h1> */}
+      {/* <p>텍스트를 음성으로</p> */}
       <div className="box">
         <input onChange={handleInput} value={value} />
         <button onClick={handleButton}>음성 변환</button>
