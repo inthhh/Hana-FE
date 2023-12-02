@@ -68,9 +68,16 @@ function SendFirst() {
       alert("돈 보내실 방법을 선택해주세요.");
     }
   };
+  const [selectedClass, setSelectedClass] = useState("");
+
+  const [flashing, setFlashing] = useState(false);
+  const [afterbtnflash, setafterbtnflash] = useState("afterbtn");
 
   const handleOptionClick = (option: any) => {
     dispatch(setOption(option));
+    setSelectedClass("none");
+    setafterbtnflash("afterbtn-flash");
+    console.log(afterbtnflash);
   };
 
   return (
@@ -81,7 +88,7 @@ function SendFirst() {
         선택해주세요.
       </div>
       <div
-        className={`send-box ${selectedOption === "전화번호" ? "selected" : ""}`}
+        className={`send-box ${selectedOption === "전화번호" ? "selected" : selectedClass}`}
         onClick={() => handleOptionClick("전화번호")}
         style={{ display: "flex" }}
       >
@@ -94,7 +101,7 @@ function SendFirst() {
         </div>
       </div>
       <div
-        className={`send-box ${selectedOption === "계좌번호" ? "selected" : ""}`}
+        className={`send-box ${selectedOption === "계좌번호" ? "selected" : selectedClass}`}
         onClick={() => handleOptionClick("계좌번호")}
       >
         <div className="btn-text" style={{ display: "flex" }}>
@@ -108,7 +115,7 @@ function SendFirst() {
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
         </div>
-        <div className="afterbtn" onClick={handleToAfter}>
+        <div className={afterbtnflash} onClick={handleToAfter}>
           다음 &gt;
         </div>
       </div>
