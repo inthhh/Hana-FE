@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import { getSpeech } from "./getSpeech"; // Import the text-to-speech function
 
 const STT: React.FC = () => {
   const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
@@ -37,6 +38,11 @@ const STT: React.FC = () => {
   };
 
   useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
     if (browserSupportsSpeechRecognition) checking();
   }, [transcript]);
 
@@ -44,13 +50,19 @@ const STT: React.FC = () => {
     return <span>브라우저가 음성 인식을 지원하지 않습니다.</span>;
   }
 
+  const stopandspeech = () => {
+    SpeechRecognition.stopListening();
+    getSpeech(guide);
+    console.log("speech main");
+  };
+
   return (
     <div>
       <div style={{ display: "flex", marginLeft: "100px" }}>
         <p style={{ fontSize: "10px", marginRight: "10px" }}>마이크 상태: {listening ? "on" : "off"}</p>
 
         <button onClick={() => SpeechRecognition.startListening({ continuous: true, language: "ko" })}>Start</button>
-        <button onClick={SpeechRecognition.stopListening}>Stop</button>
+        <button onClick={stopandspeech}>Stop</button>
       </div>
       {/* <p>인식된 문장 : {transcript}</p> */}
       {/* <p>가이드 값: {guide}</p> */}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Main.css";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +26,7 @@ function Main() {
   const handleProductClick = () => {
     navigate("/ProductFirst");
   };
+
   return (
     <div className="App">
       <div className="title" style={{ marginLeft: "20px" }}>
