@@ -59,10 +59,15 @@ const STT: React.FC = () => {
   return (
     <div>
       <div style={{ display: "flex", marginLeft: "100px" }}>
-        <p style={{ fontSize: "10px", marginRight: "10px" }}>마이크 상태: {listening ? "on" : "off"}</p>
+        <p style={{ fontSize: "10px", marginRight: "10px" }}>마이크 상태: {listening ? "켜짐" : "꺼짐"}</p>
 
-        <button onClick={() => SpeechRecognition.startListening({ continuous: true, language: "ko" })}>Start</button>
-        <button onClick={stopandspeech}>Stop</button>
+        <button
+          onClick={() => SpeechRecognition.startListening({ continuous: true, language: "ko" })}
+          style={{ marginRight: "5px" }}
+        >
+          말하기
+        </button>
+        <button onClick={stopandspeech}>멈추기</button>
       </div>
       {/* <p>인식된 문장 : {transcript}</p> */}
       {/* <p>가이드 값: {guide}</p> */}

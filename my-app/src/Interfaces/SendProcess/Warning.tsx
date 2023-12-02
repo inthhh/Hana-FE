@@ -128,7 +128,7 @@ function Warning() {
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
         </div>
-        <div className="afterbtn" onClick={handleToAfter}>
+        <div className="afterbtn-flash" onClick={handleToAfter}>
           다음 &gt;
         </div>
       </div>

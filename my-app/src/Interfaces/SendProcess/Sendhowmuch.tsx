@@ -39,14 +39,22 @@ function Sendhowmuch() {
     }
   };
 
+  const [selectedClass, setSelectedClass] = useState("");
+  const [afterbtnflash, setafterbtnflash] = useState("afterbtn");
+
   const handleOptionClick = (option: any) => {
     console.log(option);
+    setSelectedClass("none");
+    setafterbtnflash("afterbtn-flash");
+    console.log(afterbtnflash);
     if (option === "전액") {
       dispatch(setMoney(accountAmount)); // 전액
+      setSelectedClass("none");
     } else dispatch(setMoney(option)); // 선택한 금액
   };
 
   const handleDirectInputClick = () => {
+    setSelectedClass("none");
     dispatch(setMoney(0));
   };
 
@@ -58,8 +66,6 @@ function Sendhowmuch() {
       console.error("Invalid input. Please enter a valid number.");
     }
   };
-
-  // const selectedOption = useSelector((state: any) => state.selectedOption);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -124,24 +130,39 @@ function Sendhowmuch() {
         <div style={{ marginTop: "30px", marginLeft: "10px", height: "50px", fontSize: "30px" }}>원</div>
       </div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div className="amountButton" onClick={() => handleOptionClick(10000)}>
+        <div
+          className={`amountButton ${money === 10000 ? "selected" : selectedClass}`}
+          onClick={() => handleOptionClick(10000)}
+        >
           1만
         </div>
-        <div className="amountButton" onClick={() => handleOptionClick(50000)}>
+        <div
+          className={`amountButton ${money === 50000 ? "selected" : selectedClass}`}
+          onClick={() => handleOptionClick(50000)}
+        >
           5만
         </div>
-        <div className="amountButton" onClick={() => handleOptionClick(100000)}>
+        <div
+          className={`amountButton ${money === 100000 ? "selected" : selectedClass}`}
+          onClick={() => handleOptionClick(100000)}
+        >
           10만
         </div>
       </div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div className="amountButton" onClick={() => handleOptionClick(1000000)}>
+        <div
+          className={`amountButton ${money === 1000000 ? "selected" : selectedClass}`}
+          onClick={() => handleOptionClick(1000000)}
+        >
           100만
         </div>
-        <div className="amountButton" onClick={() => handleOptionClick("전액")}>
+        <div
+          className={`amountButton ${money === accountAmount ? "selected" : selectedClass}`}
+          onClick={() => handleOptionClick("전액")}
+        >
           전액
         </div>
-        <div className="amountButton" onClick={handleDirectInputClick}>
+        <div className={`amountButton ${money === 0 ? "selected" : selectedClass}`} onClick={handleDirectInputClick}>
           직접 입력
         </div>
       </div>
@@ -150,7 +171,7 @@ function Sendhowmuch() {
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
         </div>
-        <div className="afterbtn" onClick={handleToAfter}>
+        <div className={afterbtnflash} onClick={handleToAfter}>
           보내기 &gt;
         </div>
       </div>

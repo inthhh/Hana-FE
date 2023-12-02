@@ -68,11 +68,17 @@ function Send1_2() {
     }
   };
 
+  const [selectedClass, setSelectedClass] = useState("");
+  const [afterbtnflash, setafterbtnflash] = useState("afterbtn");
+
   const handleOptionClick = (option: any) => {
     // console.log(option);
     dispatch(setReceiver(option.numberName));
     dispatch(setReceiveAccount(option.bankCode));
     console.log(receiver, receiveAccount);
+    setSelectedClass("none");
+    setafterbtnflash("afterbtn-flash");
+    console.log(afterbtnflash);
   };
 
   const selectedOption = useSelector((state: any) => state.selectedOption);
@@ -119,7 +125,7 @@ function Send1_2() {
       {numbers.map((number, index) => (
         <div
           key={index}
-          className={`phonenumberList ${receiver === number.numberName ? "selected" : ""}`}
+          className={`phonenumberList ${receiver === number.numberName ? "selected" : selectedClass}`}
           onClick={() => handleOptionClick(number)}
         >
           <div style={{ fontSize: "30px", marginRight: "30px" }}>{number.numberName}</div>
@@ -131,7 +137,7 @@ function Send1_2() {
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
         </div>
-        <div className="afterbtn" onClick={handleToAfter}>
+        <div className={afterbtnflash} onClick={handleToAfter}>
           다음 &gt;
         </div>
       </div>

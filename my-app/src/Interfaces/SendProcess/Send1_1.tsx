@@ -22,8 +22,14 @@ function Send1_1() {
     navigate("/Send1_2");
   };
 
+  const [selectedClass, setSelectedClass] = useState("");
+  const [afterbtnflash, setafterbtnflash] = useState("afterbtn");
+
   const handleClick = (n: any) => {
     setOption(n);
+    setSelectedClass("none");
+    setafterbtnflash("afterbtn-flash");
+    console.log(afterbtnflash);
   };
 
   const [voiceGuide, setVoiceGuide] = useState("");
@@ -86,7 +92,7 @@ function Send1_1() {
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
         </div>
-        <div className="afterbtn" onClick={handleToAfter}>
+        <div className={afterbtnflash} onClick={handleToAfter}>
           다음 &gt;
         </div>
       </div>
