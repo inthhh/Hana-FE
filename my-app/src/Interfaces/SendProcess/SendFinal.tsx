@@ -144,7 +144,7 @@ function SendFinal() {
       </div>
       <img src={HanaGirl} style={{ width: "200px" }} />
       <div style={{ fontSize: "30px", fontWeight: "500", marginTop: "20px" }}>
-        <span style={{ fontWeight: "bold" }}>{receiver}</span>
+        <span style={{ fontWeight: "bold" }}>{receiver !== null ? receiver : `${receiveAccount}은행`}</span>
         님에게 <br />
         <span style={{ fontWeight: "bold" }}>{money}원</span>
         <br />

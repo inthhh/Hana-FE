@@ -48,7 +48,8 @@ function Send2_1() {
       .then((data) => {
         if (data.code === 200) {
           setAccounts(data.data.accountResponses);
-          // console.log(data.data.accountResponses);
+
+          console.log("2-1", data.data.accountResponses);
         } else {
           console.error("Error fetching accounts:", data.message);
         }
@@ -60,8 +61,9 @@ function Send2_1() {
   }, []);
 
   useEffect(() => {
-    const selectedAccount = accounts.find((account) => account.accountNumber === sendAccount);
-
+    console.log(sendAccount);
+    const selectedAccount = accounts.find((account) => account.accountId === sendAccount);
+    console.log(selectedAccount);
     if (selectedAccount) {
       setSelectedAccountInfo(selectedAccount);
       console.log(selectedAccount);
@@ -102,13 +104,25 @@ function Send2_1() {
     fetchData();
   }, [selectedOption]); // Dependency array to ensure the API call is triggered when selectedOption changes
 
+  const [selectedClass, setSelectedClass] = useState("");
+  const [selectedClass2, setSelectedClass2] = useState("");
+  const [afterbtnflash, setafterbtnflash] = useState("afterbtn");
+
+  const handleClick = (option: any) => {
+    // console.log(option);
+    setSelectedClass("selected");
+    setSelectedClass2("none");
+    setafterbtnflash("afterbtn-flash");
+    console.log(afterbtnflash);
+  };
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div className="sub-title" style={{ height: "50px", marginTop: "20px" }}>
         이하나
       </div>
       <div
-        className="send-box"
+        className="send-box-basic"
         // onClick={() => handleOptionClick("계좌번호")}
       >
         <div>
@@ -122,8 +136,9 @@ function Send2_1() {
         </div>
       </div>
       <div
+        className={`send-box ${selectedClass}`}
         style={{
-          background: "#D4D4D4",
+          background: "#C5DFDF",
           borderRadius: "10px",
           width: "330px",
           height: "72px",
@@ -134,10 +149,11 @@ function Send2_1() {
           color: "#008485",
           fontWeight: "bold",
         }}
+        onClick={handleClick}
       >
         돈 보내기
       </div>
-      <div className="send-box" style={{ height: "100px" }} onClick={handleToBefore}>
+      <div className={`send-box ${selectedClass2}`} style={{ height: "100px" }} onClick={handleToBefore}>
         다른 계좌에서
         <br />
         돈 보내기
@@ -147,7 +163,7 @@ function Send2_1() {
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
         </div>
-        <div className="afterbtn" onClick={handleToAfter}>
+        <div className={afterbtnflash} onClick={handleToAfter}>
           다음 &gt;
         </div>
       </div>
