@@ -10,6 +10,13 @@ import SendSecond from "./Interfaces/SendProcess/SendSecond";
 import SendFinal from "./Interfaces/SendProcess/SendFinal";
 import MainCal from "./Interfaces/Calendars/MainCal";
 import ProductFirst from "./Interfaces/Products/ProductFirst";
+import ProductSecond from "./Interfaces/Products/ProductSecond";
+import Product3 from "./Interfaces/Products/Product3";
+import Product4 from "./Interfaces/Products/Product4";
+import Product5 from "./Interfaces/Products/Product5";
+import Product6 from "./Interfaces/Products/Product6";
+import Product7 from "./Interfaces/Products/Product7";
+import Product8 from "./Interfaces/Products/Product8";
 import TicketFirst from "./Interfaces/Tickets/TicketFirst";
 import Send1_1 from "./Interfaces/SendProcess/Send1_1";
 import Send1_2 from "./Interfaces/SendProcess/Send1_2";
@@ -44,6 +51,13 @@ function App() {
             <Route path="/MainCalendar" element={<MainCal />} />
             <Route path="/schedule/:year/:month/:day" element={<Schedule />} />
             <Route path="/ProductFirst" element={<ProductFirst />} />
+            <Route path="/ProductSecond" element={<ProductSecond />} />
+            <Route path="/Product3" element={<Product3 />} />
+            <Route path="/Product4" element={<Product4 />} />
+            <Route path="/Product5" element={<Product5 />} />
+            <Route path="/Product6" element={<Product6 />} />
+            <Route path="/Product7" element={<Product7 />} />
+            <Route path="/Product8" element={<Product8 />} />
             <Route path="/TicketFirst" element={<TicketFirst />} />
           </Routes>
         </div>

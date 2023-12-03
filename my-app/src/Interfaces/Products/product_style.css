@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: space-around; /* 요소들을 가운데 정렬하는 CSS 속성 */
+  margin: 20px; /* 요소들 간의 간격을 조절하는 CSS 속성 */
+}
+
+.box {
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  border: 1px solid #b3b3b3;
+  background: #e6e6e6;
+}

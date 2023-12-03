@@ -158,7 +158,7 @@
   height: 160px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border: 4px solid #c4c4c4;
+  border: 2px solid #c4c4c4;
   border-radius: 10px;
   display: flex;
   align-items: center;

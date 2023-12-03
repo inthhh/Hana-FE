@@ -3,7 +3,6 @@ import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setOption } from "../../redux/store"; // setOption import 추가
-
 import { getSpeech } from "../../getSpeech";
 
 function Warning() {

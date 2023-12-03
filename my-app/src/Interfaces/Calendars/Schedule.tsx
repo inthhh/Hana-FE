@@ -49,7 +49,7 @@ const Schedule: React.FC = () => {
       </h2>
       {/* api에서 불러온 정보 리스트*/}
       {scheduleData?.map((item, index) => (
-        <div className="send-box" style={{ marginTop: "10px" }} key={index}>
+        <div className="send-box-basic" style={{ marginTop: "10px", borderRadius: "50px" }} key={index}>
           <div>
             <p style={{ fontWeight: "bold" }}>{item.houseName}</p>
             <p style={{ marginTop: "5px", fontSize: "16px" }}>청약마감일 : {item.receiptEndDate}</p>
@@ -63,8 +63,14 @@ const Schedule: React.FC = () => {
         rel="noopener noreferrer"
       >
         <div
-          className="send-box"
-          style={{ height: "50px", background: "rgba(0, 132, 133, 0.20)", fontWeight: "bold", color: "black" }}
+          className="send-box-basic"
+          style={{
+            height: "50px",
+            background: "rgba(0, 132, 133, 0.20)",
+            fontWeight: "bold",
+            color: "black",
+            borderRadius: "20px",
+          }}
         >
           <span style={{ fontWeight: "bold" }}>복지서비스&nbsp;</span> 알아보기
         </div>
