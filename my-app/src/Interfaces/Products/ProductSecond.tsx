@@ -4,23 +4,27 @@ import { useNavigate } from "react-router-dom";
 import Hanagirl from "../../imgs/hanaGirl.png";
 import Hanaboy from "../../imgs/hanaBoy.png";
 import "./product_style.css";
+import p1 from "../../imgs/p1.png";
+import p2 from "../../imgs/p2.png";
+import p3 from "../../imgs/p3.png";
+import p4 from "../../imgs/p4.png";
 
 function ProductSecond() {
   const navigate = useNavigate();
   const [selectedClass, setSelectedClass] = useState("");
-  const [selectedItem, setSelectedItem] = useState(3);
+  const [selectedItem, setSelectedItem] = useState(9);
 
   const handleToBefore = () => {
     navigate("/ProductFirst");
   };
   const handleToAfter = () => {
     setSelectedClass("selected");
-    navigate(`/Product${selectedItem}`);
+    navigate(`/Product${selectedItem + 3}`);
   };
 
   const handleBoxClick = (index: number) => {
-    setSelectedItem(index + 3); // 클릭한 항목의 인덱스를 상태에 저장
-    console.log(index + 3);
+    setSelectedItem(index); // 클릭한 항목의 인덱스를 상태에 저장
+    console.log(index);
   };
   return (
     <div>
@@ -29,27 +33,43 @@ function ProductSecond() {
 
       <div className="container">
         <div className={`box ${selectedItem === 0 ? "selected" : ""}`} onClick={() => handleBoxClick(0)}>
-          생활비
-          <br />
-          할인
+          <div style={{ margin: "12px 0" }}>
+            생활비
+            <br />
+            할인
+            <br />
+          </div>
+          <img src={p1} width={"80px"} />
         </div>
 
         <div className={`box ${selectedItem === 1 ? "selected" : ""}`} onClick={() => handleBoxClick(1)}>
-          목돈
-          <br />
-          만들기
+          <div style={{ margin: "12px 0" }}>
+            목돈
+            <br />
+            만들기
+            <br />
+          </div>
+          <img src={p2} width={"80px"} />
         </div>
       </div>
       <div className="container">
         <div className={`box ${selectedItem === 2 ? "selected" : ""}`} onClick={() => handleBoxClick(2)}>
-          연금
-          <br />
-          받기
+          <div style={{ margin: "12px 0" }}>
+            연금
+            <br />
+            받기
+            <br />
+          </div>
+          <img src={p3} width={"80px"} />
         </div>
 
         <div className={`box ${selectedItem === 3 ? "selected" : ""}`} onClick={() => handleBoxClick(3)}>
-          집<br />
-          구매하기
+          <div style={{ margin: "12px 0" }}>
+            집<br />
+            구매하기
+            <br />
+          </div>
+          <img src={p4} width={"80px"} />
         </div>
       </div>
 

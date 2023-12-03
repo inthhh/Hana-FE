@@ -2,12 +2,63 @@
   display: flex;
   justify-content: space-around; /* 요소들을 가운데 정렬하는 CSS 속성 */
   margin: 20px; /* 요소들 간의 간격을 조절하는 CSS 속성 */
+  font-size: 35px;
 }
 
 .box {
   width: 150px;
-  height: 150px;
+  height: 200px;
   border-radius: 20px;
+  box-sizing: border-box;
   border: 1px solid #b3b3b3;
   background: #e6e6e6;
+}
+.box.selected {
+  border: 6px solid #008485;
+}
+
+.greenbtn {
+  border-radius: 30px;
+  border: 1px solid #b3b3b3;
+  background: #00848533;
+  width: 339px;
+  height: 160px;
+  flex-shrink: 0;
+  flex-shrink: 0;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  color: #008485;
+}
+
+.counseling {
+  border-radius: 30px;
+  border: 1px solid #b3b3b3;
+  background: #f8eecd;
+  width: 339px;
+  height: 60px;
+  flex-shrink: 0;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+}
+
+.yesno {
+  width: 147px;
+  height: 80px;
+  flex-shrink: 0;
+  background-color: rgba(217, 217, 217, 0.4);
+  stroke-width: 1px;
+  stroke: #b3b3b3;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px auto;
+  font-size: 35px;
+  border: 1px solid #b3b3b3;
 }

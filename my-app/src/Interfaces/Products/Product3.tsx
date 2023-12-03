@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Hanagirl from "../../imgs/hanaGirl.png";
 import Hanaboy from "../../imgs/hanaBoy.png";
 import "./product_style.css";
+import p1 from "../../imgs/p1.png";
 
 function Product3() {
   const navigate = useNavigate();
@@ -19,9 +20,10 @@ function Product3() {
   return (
     <div>
       <div style={{ paddingTop: "50px", fontSize: "35px" }}>생활비 할인을</div>
-      <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}>받을 수 있는 카드를</div>
+      <div style={{ paddingTop: "10px", fontSize: "35px" }}>받을 수 있는 카드를</div>
       <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}>추천해드릴게요.</div>
-
+      <img src={p1} width={"100px"} />
+      <div className="counseling">상담하기</div>
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전
