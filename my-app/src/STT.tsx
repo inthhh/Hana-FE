@@ -58,7 +58,7 @@ const STT: React.FC = () => {
 
   return (
     <div>
-      <div style={{ display: "flex", marginLeft: "100px" }}>
+      <div style={{ display: "flex", marginLeft: "80px" }}>
         <p style={{ fontSize: "10px", marginRight: "10px" }}>마이크 상태: {listening ? "켜짐" : "꺼짐"}</p>
 
         <button
