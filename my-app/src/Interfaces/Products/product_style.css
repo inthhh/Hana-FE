@@ -47,6 +47,21 @@
   font-size: 35px;
 }
 
+.products {
+  border-radius: 30px;
+  border: 1px solid #b3b3b3;
+  background: rgba(0, 132, 133, 0.2);
+  width: 339px;
+  height: 80px;
+  flex-shrink: 0;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+
 .yesno {
   width: 147px;
   height: 80px;

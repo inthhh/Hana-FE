@@ -13,7 +13,9 @@
 * {
   margin: 0;
   padding: 0;
+  touch-action: pan-y;
 }
+
 body {
   overflow: hidden;
 }

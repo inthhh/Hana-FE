@@ -17,12 +17,37 @@ function Product6() {
     setSelectedClass("selected");
     navigate("/Product7");
   };
+
+  const handleLink = (url: string) => {
+    window.location.href = url;
+  };
+
   return (
     <div>
       <div style={{ paddingTop: "50px", fontSize: "35px" }}>집 구매하는 것에</div>
       <div style={{ paddingTop: "10px", fontSize: "35px" }}>도움이 될 수 있는</div>
       <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}> 상품을 추천해드릴게요.</div>
       <img src={p4} width={"100px"} />
+      <div
+        className="products"
+        onClick={() => handleLink("https://www.kebhana.com/cont/mall/mall08/mall0801/mall080102/1419695_115157.jsp")}
+      >
+        주택청약종합저축
+      </div>
+      <div
+        className="products"
+        onClick={() => handleLink("https://www.kebhana.com/cont/mall/mall08/mall0801/mall080102/1450446_115157.jsp")}
+      >
+        내집마련 더블업적금
+      </div>
+      <div
+        className="products"
+        onClick={() =>
+          handleLink("https://www.kebhana.com/cont/mall/mall08/mall0802/mall080203/1489881_115198.jsp?_menuNo=98786")
+        }
+      >
+        주거안정 주택구입자금대출
+      </div>
       <div className="counseling">상담하기</div>
 
       <div className="buttonContainer">

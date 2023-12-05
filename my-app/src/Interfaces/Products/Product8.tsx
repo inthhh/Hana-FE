@@ -17,6 +17,11 @@ function Product8() {
     setSelectedClass("selected");
     navigate("/");
   };
+
+  const handleLink = (url: string) => {
+    window.location.href = url;
+  };
+
   return (
     <div>
       <div style={{ display: "flex" }}>
@@ -26,15 +31,27 @@ function Product8() {
           <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}>배우고 싶다면</div>
         </div>
       </div>
-      <div className="greenbtn" style={{ height: "100px" }}>
+      <div
+        className="greenbtn"
+        style={{ height: "100px", cursor: "pointer" }}
+        onClick={() => handleLink("https://pf.kakao.com/_xdxaxeKK")}
+      >
         광주에
         <br />
         거주하시나요?
       </div>
-      <div className="greenbtn" style={{ height: "100px", background: "#EAEAEA", color: "black" }}>
+      <div
+        className="greenbtn"
+        style={{ height: "100px", background: "#EAEAEA", color: "black", cursor: "pointer" }}
+        onClick={() => handleLink("https://www.bok.or.kr/portal/ecEdu/ecWordDicary/search.do?menuNo=200688")}
+      >
         경제 용어 사전
       </div>
-      <div className="greenbtn" style={{ height: "100px", background: "#EAEAEA", color: "black" }}>
+      <div
+        className="greenbtn"
+        style={{ height: "100px", background: "#EAEAEA", color: "black", cursor: "pointer" }}
+        onClick={() => handleLink("https://www.bok.or.kr/portal/bbs/B0000273/list.do?menuNo=201037")}
+      >
         경제 카드 뉴스 보기
       </div>
 
