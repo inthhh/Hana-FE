@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import Hanagirl from "../../imgs/hanaGirl.png";
 import Hanaboy from "../../imgs/hanaBoy.png";
 import "./product_style.css";
 import p1 from "../../imgs/p1.png";
+import { useSelector } from "react-redux";
+import { getSpeech } from "../../getSpeech";
 
 function Product3() {
   const navigate = useNavigate();
@@ -27,6 +29,54 @@ function Product3() {
   const handleLink3 = () => {
     window.location.href = "https://m.hanacard.co.kr/MKCDCM1000M.web?CD_PD_SEQ=15860";
   };
+
+  const [voiceGuide, setVoiceGuide] = useState("");
+  const isGuideTrue = useSelector((state: any) => state.isGuideTrue);
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
+
+  useEffect(() => {
+    console.log("SendFirst component mounted");
+    if (isGuideTrue) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch("https://with-pet-be.org/api/voice/guide", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              voiceCode: "ITEM",
+              remitCode: "NOTDECIDE",
+              index: 3,
+            }),
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            console.log("API Response:", result);
+
+            setVoiceGuide(result.data.guide);
+          } else {
+            console.error("API Error:", response.statusText);
+          }
+        } catch (error) {
+          console.error("API Error");
+        }
+      };
+
+      fetchData();
+    }
+  }, []);
+
   return (
     <div>
       <div style={{ paddingTop: "50px", fontSize: "35px" }}>생활비 할인을</div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import Hanagirl from "../../imgs/hanaGirl.png";
@@ -8,6 +8,8 @@ import p1 from "../../imgs/p1.png";
 import p2 from "../../imgs/p2.png";
 import p3 from "../../imgs/p3.png";
 import p4 from "../../imgs/p4.png";
+import { getSpeech } from "../../getSpeech";
+import { useSelector } from "react-redux";
 
 function ProductSecond() {
   const navigate = useNavigate();
@@ -26,6 +28,54 @@ function ProductSecond() {
     setSelectedItem(index); // 클릭한 항목의 인덱스를 상태에 저장
     console.log(index);
   };
+
+  const [voiceGuide, setVoiceGuide] = useState("");
+  const isGuideTrue = useSelector((state: any) => state.isGuideTrue);
+
+  useEffect(() => {
+    window.speechSynthesis.getVoices();
+    console.log("getvoices");
+  }, []);
+
+  useEffect(() => {
+    getSpeech(voiceGuide);
+    console.log("speech");
+  }, [voiceGuide]);
+
+  useEffect(() => {
+    console.log("SendFirst component mounted");
+    if (isGuideTrue) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch("https://with-pet-be.org/api/voice/guide", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              voiceCode: "ITEM",
+              remitCode: "NOTDECIDE",
+              index: 2,
+            }),
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            console.log("API Response:", result);
+
+            setVoiceGuide(result.data.guide);
+          } else {
+            console.error("API Error:", response.statusText);
+          }
+        } catch (error) {
+          console.error("API Error");
+        }
+      };
+
+      fetchData();
+    }
+  }, []);
+
   return (
     <div>
       <div style={{ paddingTop: "50px", fontSize: "35px" }}>관심있는 혜택을</div>
