@@ -75,11 +75,13 @@ body {
   padding-top: 10px;
 }
 
+.noevent {
+}
 .events {
   position: absolute;
   /* bottom: 0px; */
   left: 0px;
   right: 0px;
   width: 100%;
-  background-color: lightgreen;
+  background-color: #00848533;
 }

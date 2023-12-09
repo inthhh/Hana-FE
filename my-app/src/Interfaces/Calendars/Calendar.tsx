@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
 
@@ -15,14 +15,42 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, onChangeMonth }) => {
   const numDays = daysInMonth(year, month);
   const firstDayOfWeek = new Date(year, month, 1).getDay();
   const weeks = Math.ceil((numDays + firstDayOfWeek) / 7);
+  const [calendarData, setCalendarData] = useState<any>(null);
+
+  useEffect(() => {
+    // API 호출
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://with-pet-be.org/api/calendar/date?year=${year}&month=${month + 1}`);
+        if (response.ok) {
+          const result = await response.json();
+          console.log("API Response:", result);
+          setCalendarData(result.data);
+        } else {
+          console.error("API Error:", response.statusText);
+        }
+      } catch (error) {
+        console.error("API Error:", error);
+      }
+    };
+
+    fetchData();
+  }, [year, month]);
 
   const renderDays = () => {
     const days = [];
+    if (!calendarData) {
+      return null;
+    }
+
     for (let i = 1; i <= numDays; i++) {
+      const dayData = calendarData.calendarDateResponses.find((data: any) => data.day === i);
+      const hasEvent = dayData && dayData.check;
+      // console.log(hasEvent);
       days.push(
-        <div key={i} className="day" onClick={() => handleDateClick(i)}>
+        <div key={i} className={`day`} onClick={() => handleDateClick(i)}>
           <span className="date">{i}</span>
-          {/* <div className="events">일정</div> */}
+          <div className={`${hasEvent ? "events" : "noevent"}`}>&nbsp;</div>
         </div>
       );
     }
