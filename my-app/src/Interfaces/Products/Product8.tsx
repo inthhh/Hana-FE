@@ -54,9 +54,8 @@ function Product8() {
       >
         경제 카드 뉴스 보기
       </div>
-
       <div className="counseling">상담하기</div>
-
+      <div style={{ height: "80px" }}></div> {/* 스크롤 마진 영역 */}
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전

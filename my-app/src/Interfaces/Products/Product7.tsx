@@ -37,7 +37,7 @@ function Product7() {
         <br />
         전화 연결하기
       </div>
-
+      <div style={{ height: "80px" }}></div> {/* 스크롤 마진 영역 */}
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전

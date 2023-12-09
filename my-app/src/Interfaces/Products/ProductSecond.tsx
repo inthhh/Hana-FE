@@ -30,7 +30,6 @@ function ProductSecond() {
     <div>
       <div style={{ paddingTop: "50px", fontSize: "35px" }}>관심있는 혜택을</div>
       <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}>선택해주세요</div>
-
       <div className="container">
         <div className={`box ${selectedItem === 0 ? "selected" : ""}`} onClick={() => handleBoxClick(0)}>
           <div style={{ margin: "12px 0" }}>
@@ -72,7 +71,7 @@ function ProductSecond() {
           <img src={p4} width={"80px"} />
         </div>
       </div>
-
+      <div style={{ height: "80px" }}></div> {/* 스크롤 마진 영역 */}
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전

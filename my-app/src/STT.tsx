@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import { getSpeech } from "./getSpeech"; // Import the text-to-speech function
+import { setIsGuideTrue } from "./redux/store";
+import { useDispatch, useSelector } from "react-redux";
 
 const STT: React.FC = () => {
+  const dispatch = useDispatch();
+  const isGuideTrue = useSelector((state: any) => state.isGuideTrue);
+
   const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
   const [scrollState, setScrollState] = useState(0);
   const [guide, setGuide] = useState("");
 
   const word = transcript.split(" ");
+  useEffect(() => {
+    setGuide("");
+  }, []);
 
   const checking = async () => {
     try {
+      // setGuide("");
       console.log("인식된 문장 : ", word[word.length - 1]);
       const response = await fetch("https://with-pet-be.org/api/voice", {
         method: "POST",
@@ -29,6 +38,7 @@ const STT: React.FC = () => {
         // Update state with the received guide value
         setGuide(result.data.guide);
         console.log(result.data.guide);
+        dispatch(setIsGuideTrue());
       } else {
         console.error("API Error:", response.statusText);
       }

@@ -19,7 +19,6 @@ function ProductFirst() {
     <div>
       <div style={{ paddingTop: "40px", fontSize: "35px" }}>안녕하세요</div>
       <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}>손자/손녀에요!</div>
-
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <img src={Hanaboy} width={"120px"} height={"160px"} style={{ marginLeft: "10px" }} />
         <img src={Hanagirl} width={"170px"} height={"170px"} style={{ paddingTop: "10px" }} />
@@ -28,7 +27,6 @@ function ProductFirst() {
       <div style={{ paddingTop: "20px", fontSize: "35px" }}>손님께 적합한</div>
       <div style={{ paddingTop: "10px", fontSize: "35px" }}>상품 가입을</div>
       <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}>도와드릴게요!</div>
-
       <div
         className={`send-box ${selectedClass}`}
         style={{
@@ -48,6 +46,7 @@ function ProductFirst() {
       >
         상품 가입하기
       </div>
+      <div style={{ height: "120px" }}></div> {/* 스크롤 마진 영역 */}
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore} style={{ width: "100%" }}>
           &lt; 이전 화면으로

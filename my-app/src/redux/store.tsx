@@ -10,6 +10,7 @@ interface AppState {
   receiveAccount: string | null; // 받는사람의 은행
   money: number | null; // 보낼 금액
   // sendAccountNum: number | null; // 보내는 계좌번호
+  isGuideTrue: boolean | false;
 }
 
 // 액션 타입 정의
@@ -19,6 +20,7 @@ const SET_SEND_ACCOUNT = "SET_SENDACCOUNT";
 const SET_RECEIVER = "SET_RECEIVER";
 const SET_RECEIVE_ACCOUNT = "SET_RECEIVE_ACCOUNT";
 const SET_MONEY = "SET_MONEY";
+const SET_IS_GUIDE_TRUE = "SET_IS_GUIDE_TRUE";
 
 // 액션 생성자 함수
 export const setOption = (option: string | null): AnyAction => ({
@@ -52,6 +54,10 @@ export const setMoney = (money: number | null): AnyAction => ({
   payload: money,
 });
 
+export const setIsGuideTrue = (): AnyAction => ({
+  type: SET_IS_GUIDE_TRUE,
+});
+
 // 리듀서 함수
 const reducer = (
   state: AppState = {
@@ -61,6 +67,7 @@ const reducer = (
     receiver: null,
     receiveAccount: null,
     money: null,
+    isGuideTrue: false,
   },
   action: AnyAction
 ): AppState => {
@@ -94,6 +101,11 @@ const reducer = (
       return {
         ...state,
         money: action.payload,
+      };
+    case SET_IS_GUIDE_TRUE:
+      return {
+        ...state,
+        isGuideTrue: true,
       };
     default:
       return state;

@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 function SendFirst() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const selectedOption = useSelector((state: any) => state.selectedOption);
   const [voiceGuide, setVoiceGuide] = useState("");
 
@@ -24,36 +25,39 @@ function SendFirst() {
     console.log("speech");
   }, [voiceGuide]);
 
+  const isGuideTrue = useSelector((state: any) => state.isGuideTrue);
   useEffect(() => {
     console.log("SendFirst component mounted");
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://with-pet-be.org/api/voice/guide", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            voiceCode: "REMIT",
-            remitCode: "NOTDECIDE",
-            index: 1,
-          }),
-        });
+    if (isGuideTrue) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch("https://with-pet-be.org/api/voice/guide", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              voiceCode: "REMIT",
+              remitCode: "NOTDECIDE",
+              index: 1,
+            }),
+          });
 
-        if (response.ok) {
-          const result = await response.json();
-          console.log("API Response:", result);
+          if (response.ok) {
+            const result = await response.json();
+            console.log("API Response:", result);
 
-          setVoiceGuide(result.data.guide);
-        } else {
-          console.error("API Error:", response.statusText);
+            setVoiceGuide(result.data.guide);
+          } else {
+            console.error("API Error:", response.statusText);
+          }
+        } catch (error) {
+          console.error("API Error");
         }
-      } catch (error) {
-        console.error("API Error");
-      }
-    };
+      };
 
-    fetchData();
+      fetchData();
+    }
   }, []);
 
   const handleToBefore = () => {

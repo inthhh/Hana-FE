@@ -45,9 +45,8 @@ function Product4() {
           금리 걱정없는 펀드<p style={{ fontSize: "20px", color: "red", marginTop: "5px" }}>원금손실가능성있음</p>
         </div>
       </div>
-
       <div className="counseling">상담하기</div>
-
+      <div style={{ height: "80px" }}></div> {/* 스크롤 마진 영역 */}
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
           &lt; 이전

@@ -67,39 +67,43 @@ function Sendhowmuch() {
     }
   };
 
+  const isGuideTrue = useSelector((state: any) => state.isGuideTrue);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const remitCode = selectedOption === "계좌번호" ? "ACCOUNT" : "PHONE";
-        const indexnum = selectedOption === "계좌번호" ? 5 : 6;
-        console.log(remitCode);
-        const response = await fetch("https://with-pet-be.org/api/voice/guide", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            voiceCode: "REMIT",
-            remitCode: remitCode,
-            index: indexnum,
-          }),
-        });
+    console.log("SendFirst component mounted");
+    if (isGuideTrue) {
+      const fetchData = async () => {
+        try {
+          const remitCode = selectedOption === "계좌번호" ? "ACCOUNT" : "PHONE";
+          const indexnum = selectedOption === "계좌번호" ? 5 : 6;
+          console.log(remitCode);
+          const response = await fetch("https://with-pet-be.org/api/voice/guide", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              voiceCode: "REMIT",
+              remitCode: remitCode,
+              index: indexnum,
+            }),
+          });
 
-        if (response.ok) {
-          const result = await response.json();
-          console.log("API Response:", result);
+          if (response.ok) {
+            const result = await response.json();
+            console.log("API Response:", result);
 
-          setVoiceGuide(result.data.guide);
-        } else {
-          console.error("API Error:", response.statusText);
+            setVoiceGuide(result.data.guide);
+          } else {
+            console.error("API Error:", response.statusText);
+          }
+        } catch (error) {
+          console.error("API Error");
         }
-      } catch (error) {
-        console.error("API Error");
-      }
-    };
+      };
 
-    // Call the API when the component mounts
-    fetchData();
+      // Call the API when the component mounts
+      fetchData();
+    }
   }, [selectedOption]); // Dependency array to ensure the API call is triggered when selectedOption changes
 
   return (

@@ -68,6 +68,7 @@ function Main() {
           </div>
         </div>
       </div>
+      <div style={{ height: "80px" }}></div> {/* 스크롤 마진 영역 */}
       <div className="bottomBox">&lt; 이전 화면으로 돌아가기</div>
     </div>
   );
