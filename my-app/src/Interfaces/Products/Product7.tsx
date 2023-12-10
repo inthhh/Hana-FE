@@ -67,13 +67,19 @@ function Product7() {
     }
   }, []);
 
+  const handleMsg = () => {
+    alert("상품 안내 문자가 전송되었습니다.(예시)");
+  };
+
   return (
     <div>
       <div style={{ paddingTop: "50px", fontSize: "35px" }}>선택하신 상품에 대한</div>
       <div style={{ paddingTop: "10px", fontSize: "35px" }}>자세한 설명을 문자로</div>
       <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}>받아보시겠어요?</div>
       <div style={{ display: "flex" }}>
-        <div className="yesno">예</div>
+        <div className="yesno" onClick={handleMsg}>
+          예
+        </div>
         <div className="yesno">아니오</div>
       </div>
       <div className="greenbtn" onClick={handleToAfter}>

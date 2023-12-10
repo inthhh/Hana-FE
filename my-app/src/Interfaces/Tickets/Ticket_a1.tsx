@@ -2,23 +2,54 @@ import React, { useState } from "react";
 import "../Main.css";
 import { useNavigate } from "react-router-dom";
 import Hanagirl from "../../imgs/hanaGirl.png";
+import { useDispatch, useSelector } from "react-redux";
+import { setTicketWhere } from "../../redux/store";
 
 function Ticket_a1() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const ticketWhere = useSelector((state: any) => state.ticketWhere);
+
   const handleToBefore = () => {
     navigate("/Ticket1");
   };
   const handleToAfter = () => {
     navigate("/Ticket_a2");
   };
+
+  const handleInputChange = (event: any) => {
+    const inputValue = event.target.value;
+    dispatch(setTicketWhere(inputValue)); // Redux 스토어에 값 저장
+  };
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div>
-        원하시는 지점을
-        <br />
-        입력해주세요
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontSize: "35px" }}>
+      <div className="ticketTop">
+        <div>
+          <div style={{ display: "flex" }}>
+            <p style={{ color: "#008485" }}>원하시는 지점</p>을
+          </div>
+          입력해주세요
+        </div>
       </div>
-      <input />
+      <input
+        type="text"
+        value={ticketWhere}
+        onChange={handleInputChange}
+        placeholder="지점 입력하기"
+        style={{
+          left: "20px",
+          marginBottom: "20px",
+          width: "240px",
+          height: "50px",
+          fontSize: "30px",
+
+          textAlign: "center",
+          background: "#DDEBEB",
+          borderRadius: "10px",
+          stroke: "#B3B3B3",
+        }}
+      />
       <img src={Hanagirl} width={"180px"} />
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>

@@ -11,6 +11,7 @@ interface AppState {
   money: number | null; // 보낼 금액
   // sendAccountNum: number | null; // 보내는 계좌번호
   isGuideTrue: boolean | false;
+  ticketWhere: string | null;
 }
 
 // 액션 타입 정의
@@ -21,6 +22,7 @@ const SET_RECEIVER = "SET_RECEIVER";
 const SET_RECEIVE_ACCOUNT = "SET_RECEIVE_ACCOUNT";
 const SET_MONEY = "SET_MONEY";
 const SET_IS_GUIDE_TRUE = "SET_IS_GUIDE_TRUE";
+const SET_TICKET_WHERE = "SET_TICKET_WHERE";
 
 // 액션 생성자 함수
 export const setOption = (option: string | null): AnyAction => ({
@@ -58,6 +60,11 @@ export const setIsGuideTrue = (): AnyAction => ({
   type: SET_IS_GUIDE_TRUE,
 });
 
+export const setTicketWhere = (ticketWhere: string | null): AnyAction => ({
+  type: SET_TICKET_WHERE,
+  payload: ticketWhere,
+});
+
 // 리듀서 함수
 const reducer = (
   state: AppState = {
@@ -68,6 +75,7 @@ const reducer = (
     receiveAccount: null,
     money: null,
     isGuideTrue: false,
+    ticketWhere: null,
   },
   action: AnyAction
 ): AppState => {
@@ -106,6 +114,11 @@ const reducer = (
       return {
         ...state,
         isGuideTrue: true,
+      };
+    case SET_TICKET_WHERE:
+      return {
+        ...state,
+        ticketWhere: action.payload,
       };
     default:
       return state;
