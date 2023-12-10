@@ -8,7 +8,7 @@ function TicketFirst() {
     navigate("/");
   };
   const handleToAfter = () => {
-    navigate("/TicketSecond");
+    navigate("/Ticket1");
   };
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>

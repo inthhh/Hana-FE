@@ -18,6 +18,10 @@ import Product6 from "./Interfaces/Products/Product6";
 import Product7 from "./Interfaces/Products/Product7";
 import Product8 from "./Interfaces/Products/Product8";
 import TicketFirst from "./Interfaces/Tickets/TicketFirst";
+import Ticket_a1 from "./Interfaces/Tickets/Ticket_a1";
+import Ticket_a2 from "./Interfaces/Tickets/Ticket_a2";
+import Ticket_ok from "./Interfaces/Tickets/Ticket_ok";
+import Ticket1 from "./Interfaces/Tickets/Ticket1";
 import Send1_1 from "./Interfaces/SendProcess/Send1_1";
 import Send1_2 from "./Interfaces/SendProcess/Send1_2";
 import Send1_3 from "./Interfaces/SendProcess/Send1_3";
@@ -59,6 +63,10 @@ function App() {
             <Route path="/Product7" element={<Product7 />} />
             <Route path="/Product8" element={<Product8 />} />
             <Route path="/TicketFirst" element={<TicketFirst />} />
+            <Route path="/Ticket1" element={<Ticket1 />} />
+            <Route path="/Ticket_a1" element={<Ticket_a1 />} />
+            <Route path="/Ticket_a2" element={<Ticket_a2 />} />
+            <Route path="/Ticket_ok" element={<Ticket_ok />} />
           </Routes>
         </div>
       </div>

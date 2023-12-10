@@ -332,3 +332,19 @@ span {
   font-style: normal;
   font-weight: 500;
 }
+
+.ticket_yesno {
+  width: 147px;
+  height: 80px;
+  flex-shrink: 0;
+  background-color: rgba(217, 217, 217, 0.4);
+  stroke-width: 1px;
+  stroke: #b3b3b3;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px auto;
+  font-size: 35px;
+  border: 1px solid #b3b3b3;
+}
