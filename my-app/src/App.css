@@ -40,10 +40,32 @@ body {
 }
 
 .header {
-  background-color: #f0f0f0;
-  padding: 10px;
+  /* background-color: #f0f0f0; */
+  /* padding: 10px; */
   font-weight: bold;
-  margin-top: 40px;
+  align-items: center;
+}
+.cal_title {
+  border-radius: 0px 0px 30px 30px;
+  background: rgba(0, 132, 133, 0.2);
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+.cal_btn {
+  width: 42px;
+  height: 42px;
+  margin: 0 10px;
+  border-radius: 30px;
+  font-size: 30px;
+  background: rgba(190, 211, 211, 0.2);
+  border: none;
 }
 
 .days {

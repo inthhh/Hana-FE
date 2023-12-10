@@ -79,9 +79,20 @@ function Send1_3() {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div className="sub-title">
-        받는 사람과 은행을
-        <br />
-        확인해주세요.
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "80px",
+            width: "390px",
+            background: "rgba(0, 132, 133, 0.10)",
+          }}
+        >
+          받는 사람과 은행을
+          <br />
+          확인해주세요.
+        </div>
       </div>
       <img src={HanaBoy} style={{ width: "160px" }} />
       <div style={{ marginTop: "40px", fontSize: "32px" }}>

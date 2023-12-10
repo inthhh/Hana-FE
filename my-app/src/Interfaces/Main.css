@@ -372,3 +372,16 @@ span {
   background-color: #008485;
   margin-bottom: 30px;
 }
+
+.send-final {
+  border-radius: 30px;
+  border: 1px solid #b3b3b3;
+  background: #e5f3f3;
+  width: 370px;
+  height: 150px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.3;
+}

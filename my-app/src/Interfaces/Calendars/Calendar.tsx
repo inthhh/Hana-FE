@@ -93,12 +93,21 @@ const Calendar: React.FC<CalendarProps> = ({ year, month, onChangeMonth }) => {
 
   return (
     <div className="calendar">
-      <div className="header">
-        <button onClick={handlePrevMonth}>&lt;</button>
+      <div className="header" style={{ display: "flex", justifyContent: "center" }}>
+        <button onClick={handlePrevMonth} className="cal_btn">
+          &lt;
+        </button>
         <span>
-          {year}년 {month + 1}월
+          <div className="cal_title">
+            <div>
+              <p style={{ fontSize: "20px" }}>{year}</p>
+              {month + 1}월
+            </div>
+          </div>
         </span>
-        <button onClick={handleNextMonth}>&gt;</button>
+        <button onClick={handleNextMonth} className="cal_btn">
+          &gt;
+        </button>
       </div>
       <div className="days">
         <div className="day-label" style={{ color: "red" }}>

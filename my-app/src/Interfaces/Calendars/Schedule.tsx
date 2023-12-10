@@ -44,9 +44,22 @@ const Schedule: React.FC = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <h2 style={{ marginTop: "10px" }}>
-        {year}년 {month}월 {day}일 {dayOfWeek}요일
-      </h2>
+      <div className="sub-title">
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "80px",
+            width: "390px",
+            background: "rgba(0, 132, 133, 0.10)",
+          }}
+        >
+          <h4 style={{ marginTop: "1px" }}>
+            {year}년 {month}월 {day}일 {dayOfWeek}요일
+          </h4>
+        </div>
+      </div>
       {/* api에서 불러온 정보 리스트*/}
       {scheduleData?.map((item, index) => (
         <div className="send-box-basic" style={{ marginTop: "10px", borderRadius: "50px" }} key={index}>
