@@ -23,11 +23,25 @@ function Product3() {
   const handleLink1 = () => {
     window.location.href = "https://www.kebhana.com/cont/mall/mall08/mall0801/mall080103/1455930_115188.jsp";
   };
+
   const handleLink2 = () => {
     window.location.href = "https://m.hanacard.co.kr/MKCDCM1000M.web?CD_PD_SEQ=15864";
   };
+
   const handleLink3 = () => {
     window.location.href = "https://m.hanacard.co.kr/MKCDCM1000M.web?CD_PD_SEQ=15860";
+  };
+
+  const [selectedProduct, setSelectedProduct] = useState("");
+  const isSelected = (productName: string) => selectedProduct === productName;
+  const handleSelect1 = () => {
+    setSelectedProduct("주거래하나통장");
+  };
+  const handleSelect2 = () => {
+    setSelectedProduct("원더 LIVING 카드");
+  };
+  const handleSelect3 = () => {
+    setSelectedProduct("원더카드 FREE");
   };
 
   const [voiceGuide, setVoiceGuide] = useState("");
@@ -83,14 +97,50 @@ function Product3() {
       <div style={{ paddingTop: "10px", fontSize: "35px" }}>받을 수 있는 카드를</div>
       <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}>추천해드릴게요.</div>
       <img src={p1} width={"100px"} />
-      <div className="products" onClick={handleLink1}>
-        주거래하나통장
+      <div className={`products ${isSelected("주거래하나통장") && "selected"}`}>
+        <div style={{ marginTop: "5px" }}>
+          주거래하나통장
+          <div className="p-horizontal"></div>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", fontSize: "20px" }}>
+            <div style={{ margin: "0 auto" }} onClick={handleLink1}>
+              상세설명 보기
+            </div>
+            <div className="p-vertical"></div>
+            <div style={{ margin: "0 auto", padding: "0 5px" }} onClick={handleSelect1}>
+              선택
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="products" onClick={handleLink2}>
-        원더 LIVING 카드
+      <div className={`products ${isSelected("원더 LIVING 카드") && "selected"}`}>
+        <div style={{ marginTop: "5px" }}>
+          원더 LIVING 카드
+          <div className="p-horizontal"></div>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", fontSize: "20px" }}>
+            <div style={{ margin: "0 auto" }} onClick={handleLink2}>
+              상세설명 보기
+            </div>
+            <div className="p-vertical"></div>
+            <div style={{ margin: "0 auto", padding: "0 5px" }} onClick={handleSelect2}>
+              선택
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="products" onClick={handleLink3}>
-        원더카드 FREE
+      <div className={`products ${isSelected("원더카드 FREE") && "selected"}`}>
+        <div style={{ marginTop: "5px" }}>
+          원더카드 FREE
+          <div className="p-horizontal"></div>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", fontSize: "20px" }}>
+            <div style={{ margin: "0 auto" }} onClick={handleLink3}>
+              상세설명 보기
+            </div>
+            <div className="p-vertical"></div>
+            <div style={{ margin: "0 auto", padding: "0 5px" }} onClick={handleSelect3}>
+              선택
+            </div>
+          </div>
+        </div>
       </div>
       <div className="counseling">상담하기</div>
       <div style={{ height: "80px" }}></div> {/* 스크롤 마진 영역 */}
