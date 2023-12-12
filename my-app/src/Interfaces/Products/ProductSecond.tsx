@@ -14,14 +14,18 @@ import { useSelector } from "react-redux";
 function ProductSecond() {
   const navigate = useNavigate();
   const [selectedClass, setSelectedClass] = useState("");
-  const [selectedItem, setSelectedItem] = useState(9);
+  const [selectedItem, setSelectedItem] = useState(-1);
 
   const handleToBefore = () => {
     navigate("/ProductFirst");
   };
   const handleToAfter = () => {
-    setSelectedClass("selected");
-    navigate(`/Product${selectedItem + 3}`);
+    if (selectedItem < 0) {
+      alert("상품을 선택해주세요.");
+    } else {
+      setSelectedClass("selected");
+      navigate(`/Product${selectedItem + 3}`);
+    }
   };
 
   const handleBoxClick = (index: number) => {
