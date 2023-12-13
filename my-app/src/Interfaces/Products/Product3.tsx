@@ -21,15 +21,15 @@ function Product3() {
   };
 
   const handleLink1 = () => {
-    window.location.href = "https://www.kebhana.com/cont/mall/mall08/mall0801/mall080103/1455930_115188.jsp";
+    window.open("https://www.kebhana.com/cont/mall/mall08/mall0801/mall080103/1455930_115188.jsp", "_blank");
   };
 
   const handleLink2 = () => {
-    window.location.href = "https://m.hanacard.co.kr/MKCDCM1000M.web?CD_PD_SEQ=15864";
+    window.open("https://m.hanacard.co.kr/MKCDCM1000M.web?CD_PD_SEQ=15864", "_blank");
   };
 
   const handleLink3 = () => {
-    window.location.href = "https://m.hanacard.co.kr/MKCDCM1000M.web?CD_PD_SEQ=15860";
+    window.open("https://m.hanacard.co.kr/MKCDCM1000M.web?CD_PD_SEQ=15860", "_blank");
   };
 
   const [selectedProduct, setSelectedProduct] = useState("");

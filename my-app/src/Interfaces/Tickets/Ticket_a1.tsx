@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Hanagirl from "../../imgs/hanaGirl.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setTicketWhere } from "../../redux/store";
+import PlaceSearch from "./PlaceSearch";
 
 function Ticket_a1() {
   const navigate = useNavigate();
@@ -19,8 +20,14 @@ function Ticket_a1() {
 
   const handleInputChange = (event: any) => {
     const inputValue = event.target.value;
+    setQuery(inputValue);
+    setSearchValue(inputValue);
     dispatch(setTicketWhere(inputValue)); // Redux 스토어에 값 저장
   };
+
+  const [searchValue, setSearchValue] = useState("");
+  const [query, setQuery] = useState("");
+  const [places, setPlaces] = useState([]);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontSize: "35px" }}>
@@ -50,6 +57,13 @@ function Ticket_a1() {
           stroke: "#B3B3B3",
         }}
       />
+      {/* {searchValue ? (
+        <PlaceSearch
+          searchPlace={searchValue}
+          setPlaces={setPlaces}
+          onPlaceClick={(placeName: string) => setQuery(placeName)}
+        />
+      ) : null} */}
       <img src={Hanagirl} width={"180px"} />
       <div className="buttonContainer">
         <div className="beforebtn" onClick={handleToBefore}>
