@@ -54,7 +54,8 @@ function Main() {
       <div style={{ display: "flex" }}>
         <div className="atmBox" style={{ background: "#58AAAA", marginLeft: "14px" }} onClick={handleCalendarClick}>
           <div>
-            캘린더
+            달력
+            <br />
             <img src={Calendarimg} width={"80px"} style={{ marginTop: "10px" }} />
           </div>
         </div>

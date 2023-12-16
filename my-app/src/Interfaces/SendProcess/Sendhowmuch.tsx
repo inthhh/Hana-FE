@@ -30,7 +30,9 @@ function Sendhowmuch() {
     else navigate("/Send2_2");
   };
   const handleToAfter = () => {
-    if (money > 0) {
+    if (money > accountAmount) {
+      alert("잔액이 부족합니다.");
+    } else if (money > 0) {
       // 선택된 옵션이 있을 때만 다음 페이지로 이동
       // navigate("/Sendpwd");
       navigate("/Warning");
@@ -63,7 +65,7 @@ function Sendhowmuch() {
     if (!isNaN(Number(inputValue))) {
       dispatch(setMoney(Number(inputValue)));
     } else {
-      console.error("Invalid input. Please enter a valid number.");
+      console.error("숫자만 입력해주세요");
     }
   };
 

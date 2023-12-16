@@ -68,7 +68,7 @@ function ProductFirst() {
   return (
     <div>
       <div style={{ paddingTop: "40px", fontSize: "35px" }}>안녕하세요</div>
-      <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}>손자/손녀에요!</div>
+      <div style={{ paddingTop: "10px", fontSize: "35px", marginBottom: "30px" }}>손자/손녀예요!</div>
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <img src={Hanaboy} width={"120px"} height={"160px"} style={{ marginLeft: "10px" }} />
         <img src={Hanagirl} width={"170px"} height={"170px"} style={{ paddingTop: "10px" }} />
