@@ -13,7 +13,6 @@
 * {
   margin: 0;
   padding: 0;
-  /* touch-action: pan-y; */
 }
 
 body {
@@ -27,12 +26,9 @@ body {
   width: 390px;
   height: 100%;
   margin: 0 auto;
-  /* margin-top: -20px; */
-  background-color: white;
-  /* background: #e6e6e6; */
-}
 
-/* src/App.css */
+  background-color: white;
+}
 
 .calendar {
   border: 1px solid #ccc;
@@ -40,8 +36,6 @@ body {
 }
 
 .header {
-  /* background-color: #f0f0f0; */
-  /* padding: 10px; */
   font-weight: bold;
   align-items: center;
 }
@@ -91,7 +85,6 @@ body {
 }
 
 .date {
-  /* font-weight: bold; */
   display: block;
   font-size: 30px;
   padding-top: 10px;
@@ -101,7 +94,7 @@ body {
 }
 .events {
   position: absolute;
-  /* bottom: 0px; */
+
   left: 0px;
   right: 0px;
   width: 100%;
