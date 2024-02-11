@@ -18,11 +18,13 @@
 ## 🔥 실행 화면
 <img width="345" alt="image" src="https://github.com/inthhh/Hana-FE/assets/91872300/40e16357-535b-4b0f-9b75-c129ca2f4231" width="300px">
 <img width="345" alt="image" src="https://github.com/inthhh/Hana-FE/assets/91872300/7733e94a-c20d-4133-a275-604f9badac5d" width="300px">
+<img width="345" alt="image" src="https://github.com/inthhh/Hana-FE/assets/91872300/6a70a2ae-537a-4d9a-b41d-b605c60296e6" width="300px">
+
 
 ## 음성인식 기능 사용방법
 <img width="174" alt="image" src="https://github.com/inthhh/Hana-FE/assets/91872300/31d15d75-e35f-4207-87da-e6ba44f3423f" width="300px">
 
-1. 말하기 버튼을 누른 후, 마이크 권한을 허용한다. (최초 1회)
+1. 말하기 버튼을 누른 후, 마이크 권한을 허용한다. (최초 1회)/n
    <img width="322" alt="image" src="https://github.com/inthhh/Hana-FE/assets/91872300/b14b7e7d-b8b6-4730-9675-a0edccd39b03" width="300px">
 2. 마이크 상태가 '켜짐'일 때, 음성을 말한 다음 '멈추기' 버튼을 누른다.
 3. 인식한 음성이 '송금', '돈을 보내고 싶어' 등 송금 관련일 경우 -> '돈 보내기' 버튼을 누르라는 안내메시지가 음성으로 나옴
